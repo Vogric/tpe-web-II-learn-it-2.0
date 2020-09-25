@@ -10,7 +10,7 @@ $r = new Router();
 
 // TODO: Personalizar para nuestro TPE
 // rutas
-// $r->addRoute("home", "GET", "TasksController", "Home");
+$r->addRoute( "courses", "GET", "TasksController", "Courses" );
 // $r->addRoute("mermelada", "GET", "TasksController", "Home");
 
 //Esto lo veo en TasksView
