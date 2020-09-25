@@ -1,30 +1,29 @@
 <?php
-    require_once 'Controller/TasksController.php';
-    require_once 'Controller/TasksAdvanceController.php';
-    require_once 'RouterClass.php';
-    
-    // CONSTANTES PARA RUTEO
-    define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+require_once 'Controller/TasksController.php';
+require_once 'Controller/TasksAdvanceController.php';
+require_once 'RouterClass.php';
 
-    $r = new Router();
+// CONSTANTES PARA RUTEO
+define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER_PORT"] . dirname( $_SERVER["PHP_SELF"] ) . '/' );
 
-    // TODO: Personalizar para nuestro TPE
-    // rutas
-    // $r->addRoute("home", "GET", "TasksController", "Home");
-    // $r->addRoute("mermelada", "GET", "TasksController", "Home");
+$r = new Router();
 
-    //Esto lo veo en TasksView
-    // $r->addRoute("insert", "POST", "TasksController", "InsertTask");
+// TODO: Personalizar para nuestro TPE
+// rutas
+// $r->addRoute("home", "GET", "TasksController", "Home");
+// $r->addRoute("mermelada", "GET", "TasksController", "Home");
 
-    // $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
-    // $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
+//Esto lo veo en TasksView
+// $r->addRoute("insert", "POST", "TasksController", "InsertTask");
 
-    //Ruta por defecto.
-    // $r->setDefaultRoute("TasksController", "Home");
+// $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
+// $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
 
-    //Advance
-    // $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+//Ruta por defecto.
+// $r->setDefaultRoute("TasksController", "Home");
 
-    //run
-    $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
-?>
+//Advance
+// $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+
+//run
+$r->route( $_GET['action'], $_SERVER['REQUEST_METHOD'] );
