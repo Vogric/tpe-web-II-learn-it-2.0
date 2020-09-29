@@ -18,13 +18,14 @@ class CoursesModel
         return $sentencia->fetchAll( PDO::FETCH_OBJ );
     }
 
-    // public function GetTask( $id_task )
-    // {
-    //     $sentencia = $this->db->prepare(
-    //         "SELECT * FROM task WHERE id=?" );
-    //     $sentencia->execute( array( $id_task ) );
-    //     return $sentencia->fetch( PDO::FETCH_OBJ );
-    // }
+    //
+    public function GetCourseDetail( $id_course )
+    {
+        $sentencia = $this->db->prepare(
+            "SELECT * FROM course WHERE id=?" );
+        $sentencia->execute( array( $id_course ) );
+        return $sentencia->fetch( PDO::FETCH_OBJ );
+    }
 
     // public function InsertTask( $title, $description, $completed, $priority )
     // {

@@ -21,6 +21,15 @@ class CoursesView
         $smarty->display( 'templates/courses.tpl' );
     }
 
+    public function ShowCourseDetail( $course )
+    {
+        $smarty = new Smarty();
+        $smarty->assign( 'title_s', $course->title );
+        $smarty->assign( 'course_s', $course );
+
+        $smarty->display( 'templates/courseDetail.tpl' );
+    }
+
     // public function ShowEditTask( $task )
     // {
     //     //TODO hacer con Smarty

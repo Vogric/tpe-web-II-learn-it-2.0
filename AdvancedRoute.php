@@ -13,6 +13,10 @@ $r = new Router();
 //http: //localhost/web-2/TPE-WEB-2-%20Repo/courses
 
 $r->addRoute( "courses", "GET", "CoursesController", "Courses" );
+
+// learnit.com/courses/:ID
+$r->addRoute( "courses/:ID", "GET", "CoursesController", "CourseDetail" );
+
 // $r->addRoute("mermelada", "GET", "CoursesController", "Home");
 
 //Esto lo veo en TasksView

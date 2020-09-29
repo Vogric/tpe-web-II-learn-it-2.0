@@ -26,6 +26,13 @@ class CoursesController
         $this->view->ShowCourses( $courses );
     }
 
+    public function CourseDetail( $params = null )
+    {
+        $course_id = $params[':ID'];
+        $course = $this->model->GetCourseDetail( $course_id );
+        $this->view->ShowCourseDetail( $course );
+    }
+
     // public function InsertCourses()
     // {
 
