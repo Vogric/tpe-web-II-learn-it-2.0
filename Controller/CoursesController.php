@@ -5,7 +5,6 @@ require_once "./Model/CoursesModel.php";
 
 class CoursesController
 {
-
     private $view;
     private $model;
 
@@ -13,46 +12,51 @@ class CoursesController
     {
         $this->view = new CoursesView();
         $this->model = new CoursesModel();
-
     }
 
-    public function Home()
+    // public function Courses()
+    // {
+    //     $this->view->HelloWorld();
+
+    // }
+
+    public function Courses()
     {
-        $tasks = $this->model->GetTasks();
-        $this->view->ShowHome( $tasks );
+        $courses = $this->model->GetCourses();
+        $this->view->ShowCourses( $courses );
     }
 
-    public function InsertTask()
-    {
+    // public function InsertCourses()
+    // {
 
-        $completed = 0;
-        if ( isset( $_POST['input_completed'] ) ) {
-            $completed = 1;
-        }
+    //     $completed = 0;
+    //     if ( isset( $_POST['input_completed'] ) ) {
+    //         $completed = 1;
+    //     }
 
-        $this->model->InsertTask( $_POST['input_title'], $_POST['input_description'], $completed, $_POST['input_priority'] );
-        $this->view->ShowHomeLocation();
-    }
+    //     $this->model->InsertCourses( $_POST['input_title'], $_POST['input_description'], $completed, $_POST['input_priority'] );
+    //     $this->view->ShowHomeLocation();
+    // }
 
-    public function EditTask( $params = null )
-    {
-        $task_id = $params[':ID'];
-        $task = $this->model->GetTask( $task_id );
+    // public function EditCourse( $params = null )
+    // {
+    //     $course_id = $params[':ID'];
+    //     $course = $this->model->GetCourse( $course_id );
 
-        $this->view->ShowEditTask( $task );
-    }
+    //     $this->view->ShowEditCourse( $course );
+    // }
 
-    public function BorrarLaTaskQueVienePorParametro( $params = null )
-    {
-        $task_id = $params[':ID'];
-        $this->model->DeleteTaskDelModelo( $task_id );
-        $this->view->ShowHomeLocation();
-    }
+    // public function BorrarLaTaskQueVienePorParametro( $params = null )
+    // {
+    //     $course_id = $params[':ID'];
+    //     $this->model->DeleteTaskDelModelo( $course_id );
+    //     $this->view->ShowHomeLocation();
+    // }
 
-    public function MarkAsCompletedTask( $params = null )
-    {
-        $task_id = $params[':ID'];
-        $this->model->MarkAsCompletedTask( $task_id );
-        $this->view->ShowHomeLocation();
-    }
+    // public function MarkAsCompletedTask( $params = null )
+    // {
+    //     $course_id = $params[':ID'];
+    //     $this->model->MarkAsCompletedTask( $course_id );
+    //     $this->view->ShowHomeLocation();
+    // }
 }

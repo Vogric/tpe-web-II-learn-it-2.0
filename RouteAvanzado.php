@@ -1,6 +1,5 @@
 <?php
-require_once 'Controller/TasksController.php';
-require_once 'Controller/TasksAdvanceController.php';
+require_once 'Controller/CoursesController.php';
 require_once 'RouterClass.php';
 
 // CONSTANTES PARA RUTEO
@@ -8,22 +7,27 @@ define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER
 
 $r = new Router();
 
+echo "Estoy en Route Avanzado <br/>";
+
 // TODO: Personalizar para nuestro TPE
 // rutas
-$r->addRoute( "courses", "GET", "TasksController", "Courses" );
-// $r->addRoute("mermelada", "GET", "TasksController", "Home");
+// learnit.com/courses/
+//http: //localhost/web-2/TPE-WEB-2-%20Repo/courses
+
+$r->addRoute( "courses", "GET", "CoursesController", "Courses" );
+// $r->addRoute("mermelada", "GET", "CoursesController", "Home");
 
 //Esto lo veo en TasksView
-// $r->addRoute("insert", "POST", "TasksController", "InsertTask");
+// $r->addRoute("insert", "POST", "CoursesController", "InsertTask");
 
-// $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
-// $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
+// $r->addRoute("delete/:ID", "GET", "CoursesController", "BorrarLaTaskQueVienePorParametro");
+// $r->addRoute("completar/:ID", "GET", "CoursesController", "MarkAsCompletedTask");
 
 //Ruta por defecto.
-// $r->setDefaultRoute("TasksController", "Home");
+// $r->setDefaultRoute("CoursesController", "Home");
 
 //Advance
-// $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+// $r->addRoute("autocompletar", "GET", "CoursesAdvanceController", "AutoCompletar");
 
 //run
 $r->route( $_GET['action'], $_SERVER['REQUEST_METHOD'] );
