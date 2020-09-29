@@ -7,8 +7,6 @@ define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER
 
 $r = new Router();
 
-echo "Estoy en Route Avanzado <br/>";
-
 // TODO: Personalizar para nuestro TPE
 // rutas
 // learnit.com/courses/
