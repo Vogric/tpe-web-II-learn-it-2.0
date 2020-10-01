@@ -1,6 +1,7 @@
 <?php
 require_once 'Controller/HomeController.php';
 require_once 'Controller/CoursesController.php';
+require_once 'Controller/AdminController.php';
 require_once 'RouterClass.php';
 
 // CONSTANTES PARA RUTEO
@@ -12,13 +13,27 @@ $r = new Router();
 // rutas
 
 // learnit.com/courses/
-//http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/
 $r->addRoute( "courses", "GET", "CoursesController", "courses" );
 
 // learnit.com/courses/:ID
-//http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/2
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/2
 
 $r->addRoute( "courses/:ID", "GET", "CoursesController", "courseDetail" );
+
+
+// learnit.com/admin
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin
+$r->addRoute( "admin", "GET", "AdminController", "admin" );
+
+// learnit.com/admin/courses
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses
+$r->addRoute( "admin/courses", "GET", "AdminController", "courses" );
+
+
+// TODO learnit.com/admin/subjects/
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subjects/
+// $r->addRoute( "admin/subjects", "GET", "AdminController", "subjects" );
 
 // $r->addRoute("mermelada", "GET", "CoursesController", "Home");
 

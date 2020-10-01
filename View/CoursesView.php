@@ -13,15 +13,9 @@ class CoursesView
         $this->smarty->assign( 'base_url', BASE_URL );
     }
 
-    public function showHome()
-    {
-        $this->smarty->assign( 'title_s', 'LearnIT' );
-        $this->smarty->display( 'templates/home.tpl' );
-    }
-
     public function showCourses( $courses )
     {
-        $this->smarty->assign( 'title_s', 'Lista de Cursos' );
+        $this->smarty->assign( 'title_s', 'Courses List' );
         $this->smarty->assign( 'courses_s', $courses );
         $this->smarty->display( 'templates/courses.tpl' );
     }
@@ -30,7 +24,7 @@ class CoursesView
     {
         $this->smarty->assign( 'title_s', $course->title );
         $this->smarty->assign( 'course_s', $course );
-        $this->smarty->display( 'templates/courseDetail.tpl' );
+        $this->smarty->display( 'templates/course_detail.tpl' );
     }
 
     // public function ShowEditTask( $task )
