@@ -22,7 +22,7 @@ class CoursesModel
     public function GetCourseDetail( $id_course )
     {
         $sentencia = $this->db->prepare(
-            "SELECT * FROM course WHERE id=?" );
+            "SELECT course.*, subject.title as subject FROM course JOIN subject ON course.id_subject = subject.id WHERE course.id=? " );
         $sentencia->execute( array( $id_course ) );
         return $sentencia->fetch( PDO::FETCH_OBJ );
     }

@@ -15,18 +15,18 @@ class CoursesView
     public function ShowCourses( $courses )
     {
         $smarty = new Smarty();
+        $smarty->assign( 'base_url', BASE_URL );
         $smarty->assign( 'title_s', $this->title );
         $smarty->assign( 'courses_s', $courses );
-
         $smarty->display( 'templates/courses.tpl' );
     }
 
     public function ShowCourseDetail( $course )
     {
         $smarty = new Smarty();
+        $smarty->assign( 'base_url', BASE_URL );
         $smarty->assign( 'title_s', $course->title );
         $smarty->assign( 'course_s', $course );
-
         $smarty->display( 'templates/courseDetail.tpl' );
     }
 

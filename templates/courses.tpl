@@ -21,7 +21,7 @@
             [topics] => Programming basics - Concepts - Computational thinking
             ) *}
                 <li>
-                {$course->title}
+                <a href="courses/{$course->id}">{$course->title}</a>
                 </li>
               {/foreach}
           </ul>

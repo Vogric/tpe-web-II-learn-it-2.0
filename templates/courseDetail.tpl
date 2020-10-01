@@ -19,23 +19,23 @@
             [difficulty] => Introductory
             [topics] => Programming basics - Concepts - Computational thinking
             ) *}
-                <li>
+                {* <li>
                 {$course_s->id}
+                </li> *}
+                <li>
+                DURATION: {$course_s->duration} weeks
                 </li>
                  <li>
-                {$course_s->title}
+                TIME COMMITMENT: {$course_s->time_commitent} hours
                 </li>
                  <li>
-                {$course_s->time_commitent}
+                SUBJECT: {$course_s->subject}
                 </li>
                  <li>
-                {$course_s->id_subject}
+                DIFFICULTY: {$course_s->difficulty}
                 </li>
                  <li>
-                {$course_s->difficulty}
-                </li>
-                 <li>
-                {$course_s->topics}
+                TOPIC(S): {$course_s->topics}
                 </li>
           </ul>
           </div>
