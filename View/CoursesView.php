@@ -5,29 +5,32 @@ require_once "./libs/smarty/Smarty.class.php";
 class CoursesView
 {
 
-    private $title;
+    private $smarty;
 
     public function __construct()
     {
-        $this->title = "Lista de Cursos";
+        $this->smarty = new Smarty();
+        $this->smarty->assign( 'base_url', BASE_URL );
     }
 
-    public function ShowCourses( $courses )
+    public function showHome()
     {
-        $smarty = new Smarty();
-        $smarty->assign( 'base_url', BASE_URL );
-        $smarty->assign( 'title_s', $this->title );
-        $smarty->assign( 'courses_s', $courses );
-        $smarty->display( 'templates/courses.tpl' );
+        $this->smarty->assign( 'title_s', 'LearnIT' );
+        $this->smarty->display( 'templates/home.tpl' );
     }
 
-    public function ShowCourseDetail( $course )
+    public function showCourses( $courses )
     {
-        $smarty = new Smarty();
-        $smarty->assign( 'base_url', BASE_URL );
-        $smarty->assign( 'title_s', $course->title );
-        $smarty->assign( 'course_s', $course );
-        $smarty->display( 'templates/courseDetail.tpl' );
+        $this->smarty->assign( 'title_s', 'Lista de Cursos' );
+        $this->smarty->assign( 'courses_s', $courses );
+        $this->smarty->display( 'templates/courses.tpl' );
+    }
+
+    public function showCourseDetail( $course )
+    {
+        $this->smarty->assign( 'title_s', $course->title );
+        $this->smarty->assign( 'course_s', $course );
+        $this->smarty->display( 'templates/courseDetail.tpl' );
     }
 
     // public function ShowEditTask( $task )

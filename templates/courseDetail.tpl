@@ -39,5 +39,8 @@
                 </li>
           </ul>
           </div>
+          <div>
+                <a href="courses/">Courses list</a>
+                </div>
    
 {include file="footer.tpl"}

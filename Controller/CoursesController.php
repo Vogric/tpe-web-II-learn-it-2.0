@@ -20,17 +20,17 @@ class CoursesController
 
     // }
 
-    public function Courses()
+    public function courses()
     {
-        $courses = $this->model->GetCourses();
-        $this->view->ShowCourses( $courses );
+        $courses = $this->model->getCourses();
+        $this->view->showCourses( $courses );
     }
 
-    public function CourseDetail( $params = null )
+    public function courseDetail( $params = null )
     {
         $course_id = $params[':ID'];
-        $course = $this->model->GetCourseDetail( $course_id );
-        $this->view->ShowCourseDetail( $course );
+        $course = $this->model->getCourseDetail( $course_id );
+        $this->view->showCourseDetail( $course );
     }
 
     // public function InsertCourses()

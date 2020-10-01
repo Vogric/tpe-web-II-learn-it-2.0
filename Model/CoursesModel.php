@@ -9,7 +9,7 @@ class CoursesModel
         $this->db = new PDO( 'mysql:host=localhost;' . 'dbname=db_courses;charset=utf8', 'root', '' );
     }
 
-    public function GetCourses()
+    public function getCourses()
     {
         $sentencia = $this->db->prepare(
             "SELECT * FROM course" );
@@ -18,8 +18,7 @@ class CoursesModel
         return $sentencia->fetchAll( PDO::FETCH_OBJ );
     }
 
-    //
-    public function GetCourseDetail( $id_course )
+    public function getCourseDetail( $id_course )
     {
         $sentencia = $this->db->prepare(
             "SELECT course.*, subject.title as subject FROM course JOIN subject ON course.id_subject = subject.id WHERE course.id=? " );
