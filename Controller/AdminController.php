@@ -38,9 +38,6 @@ class AdminController
         //     ["difficulty"]=> string(4) "High"
         //     ["topics"]=> string(11) "Contemplate"
         //   }
-        // $courses = $this->course_model->getCourses();
-        // $subjects = $this->subject_model->getSubjects();
-        // $this->view->showPrepareAddCourse( $courses, $subjects );
         $new_course = array(
             $_POST["title"],
             ((int) $_POST["duration"]),
@@ -60,6 +57,49 @@ class AdminController
         $courses = $this->course_model->getCourses();        
         $this->view-> showEditDeleteCourses( $courses );
     }
+
+    public function deleteCourse( $params )
+    {
+        $course_id = $params[':ID'];
+        $courses = $this->course_model->deleteCourse($course_id);
+        // TODO Refactor a mejor lugar
+        header("Location: ".BASE_URL."admin/courses/edit-delete");
+    }
+
+    public function editCourse( $params )
+    {
+        $course_id = $params[':ID'];
+        $course = $this->course_model->getCourseDetail( $course_id );
+        $subjects = $this->subject_model->getSubjects();
+        $this->view->showEditCourse( $course, $subjects );
+    }
+
+    public function updateCourse( $params )
+    {
+        $course_id = $params[':ID'];
+        // array(6) {
+        //     ["title"]=> string(8) "Thinking"
+        //     ["duration"]=> string(1) "1"
+        //     ["time_commitent"]=> string(1) "1"
+        //     ["id_subject"]=> string(1) "2"
+        //     ["difficulty"]=> string(4) "High"
+        //     ["topics"]=> string(11) "Contemplate"
+        //   }
+
+        $course_data = array(
+            $_POST["title"],
+            ((int) $_POST["duration"]),
+            ((int) $_POST["time_commitent"]),
+            ((int) $_POST["id_subject"]),
+            $_POST["difficulty"],
+            $_POST["topics"]                    
+        );
+        $this->course_model->updateCourse($course_id, $course_data);
+        // Después de agregar vuelve a la página de agregar
+        // TODO Refactor a mejor lugar
+        header("Location: ".BASE_URL."admin/courses/edit-delete");
+    }
+
 
 
     public function prepareAddSubject() {

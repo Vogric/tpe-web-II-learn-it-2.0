@@ -11,43 +11,61 @@ class CourseModel
 
     public function getCourses()
     {
-        $sentencia = $this->db->prepare(
+        $sentence = $this->db->prepare(
             "SELECT course.*, subject.title as subject " .
             "FROM course JOIN subject ON course.id_subject = subject.id " );
 
-        $sentencia->execute();
-        return $sentencia->fetchAll( PDO::FETCH_OBJ );
+        $sentence->execute();
+        return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
 
     public function getCourseDetail( $id_course )
     {
-        $sentencia = $this->db->prepare(
+        $sentence = $this->db->prepare(
             "SELECT course.*, subject.title as subject " .
             "FROM course JOIN subject ON course.id_subject = subject.id " .
             "WHERE course.id=? " );
-        $sentencia->execute( array( $id_course ) );
-        return $sentencia->fetch( PDO::FETCH_OBJ );
+        $sentence->execute( array( $id_course ) );
+        return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
     public function addCourse($new_course)
     {
-        $sentencia = $this->db->prepare( 
+        $sentence = $this->db->prepare( 
             "INSERT INTO course(title, duration, time_commitent," . 
             "                   id_subject, difficulty, topics) " .
             "VALUES(?,?,?,?,?,?)" );
-        $sentencia->execute( $new_course );
+        $sentence->execute( $new_course );
     }
 
-    // public function DeleteTaskDelModelo( $task_id )
-    // {
-    //     $sentencia = $this->db->prepare( "DELETE FROM task WHERE id=?" );
-    //     $sentencia->execute( array( $task_id ) );
-    // }
+    
+    public function deleteCourse($course_id)
+    {
+        $sentence = $this->db->prepare( "DELETE FROM course WHERE id=?" );
+        $sentence->execute( array( $course_id ) );
+    }    
 
+
+    public function updateCourse($course_id, $course_data)
+    {
+        $sentence = $this->db->prepare(
+            "UPDATE course SET" .
+            "       title = ?, duration = ?, time_commitent = ?," . 
+            "       id_subject = ?, difficulty = ?, topics = ? " .
+            "WHERE course.id = ?");
+
+        $values = $course_data;
+        array_push($values,$course_id);    
+    
+        $sentence->execute( $values );
+    }
+
+
+    
     // public function MarkAsCompletedTask( $task_id )
     // {
-    //     $sentencia = $this->db->prepare( "UPDATE task SET completed=1 WHERE id=?" );
-    //     $sentencia->execute( array( $task_id ) );
+    //     $sentence = $this->db->prepare( "UPDATE task SET completed=1 WHERE id=?" );
+    //     $sentence->execute( array( $task_id ) );
 
     // }
 

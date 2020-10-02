@@ -13,7 +13,7 @@
                 <tr>
                    <td>{$course->title}</td>                  
                    <td>{$course->subject}</td>
-                   <td>Edit</td>
+                   <td><a href="admin/course/edit/{$course->id}">Edit</a></td>
                    <td><a href="admin/course/delete/{$course->id}">Delete</a></td>
                 </tr>
               {/foreach}

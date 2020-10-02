@@ -36,6 +36,15 @@ class AdminView
         $this->smarty->display( 'templates/edit_delete_courses.tpl' );
     }
     
+    public function showEditCourse( $course, $subjects )
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Edit a course' );
+        $this->smarty->assign( 'course_s', $course );
+        $this->smarty->assign( 'subjects_s', $subjects );
+        $this->smarty->display( 'templates/edit_course.tpl' );
+    }
+
+
     // public function ShowHomeLocation()
     // {
     //     header( "Location: " . BASE_URL . "home" );

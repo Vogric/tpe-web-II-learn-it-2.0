@@ -11,19 +11,19 @@ class SubjectModel
 
     public function getSubjects()
     {
-        $sentencia = $this->db->prepare(
+        $sentence = $this->db->prepare(
             "SELECT * FROM subject" );
 
-        $sentencia->execute();
-        return $sentencia->fetchAll( PDO::FETCH_OBJ );
+        $sentence->execute();
+        return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
 
     public function getSubjectDetail( $id_subject )
     {
-        $sentencia = $this->db->prepare(
+        $sentence = $this->db->prepare(
             "SELECT * as subject FROM subject WHERE id=? " );
-        $sentencia->execute( array( $id_subject ) );
-        return $sentencia->fetch( PDO::FETCH_OBJ );
+        $sentence->execute( array( $id_subject ) );
+        return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
 }
