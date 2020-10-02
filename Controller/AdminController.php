@@ -55,11 +55,10 @@ class AdminController
         header("Location: ".BASE_URL."admin/course/add");
     }
 
-    public function editOrDeleteCourses() {
+    public function editDeleteCourses() {
 
-        // $courses = $this->course_model->getCourses();        
-        // $this->view->showPrepareAddCourse( $courses, $subjects );
-        echo "<h2>Edit-Delete Courses: WIP</h2>";
+        $courses = $this->course_model->getCourses();        
+        $this->view-> showEditDeleteCourses( $courses );
     }
 
 
@@ -70,7 +69,7 @@ class AdminController
         echo "<h2>Prepare Add Subject: WIP</h2>";
     }
 
-    public function editOrDeleteSubjects() {
+    public function editDeleteSubjects() {
 
         // $courses = $this->course_model->getCourses();        
         // $this->view->showPrepareAddCourse( $courses, $subjects );

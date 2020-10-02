@@ -29,19 +29,13 @@ class AdminView
         $this->smarty->display( 'templates/prepare_add_course.tpl' );
     }
 
-    // public function showCourseDetail( $course )
-    // {
-    //     $this->smarty->assign( 'title_s', $course->title );
-    //     $this->smarty->assign( 'course_s', $course );
-    //     $this->smarty->display( 'templates/course_detail.tpl' );
-    // }
-
-    // public function ShowEditTask( $task )
-    // {
-    //     //TODO hacer con Smarty
-
-    // }
-
+    public function showEditDeleteCourses( $courses )
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Edit / Delete courses' );
+        $this->smarty->assign( 'courses_s', $courses );        
+        $this->smarty->display( 'templates/edit_delete_courses.tpl' );
+    }
+    
     // public function ShowHomeLocation()
     // {
     //     header( "Location: " . BASE_URL . "home" );
