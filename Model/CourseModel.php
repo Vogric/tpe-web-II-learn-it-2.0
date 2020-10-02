@@ -1,6 +1,6 @@
 <?php
 
-class CoursesModel
+class CourseModel
 {
     private $db;
 
@@ -12,7 +12,8 @@ class CoursesModel
     public function getCourses()
     {
         $sentencia = $this->db->prepare(
-            "SELECT * FROM course" );
+            "SELECT course.*, subject.title as subject " .
+            "FROM course JOIN subject ON course.id_subject = subject.id " );
 
         $sentencia->execute();
         return $sentencia->fetchAll( PDO::FETCH_OBJ );
@@ -21,16 +22,21 @@ class CoursesModel
     public function getCourseDetail( $id_course )
     {
         $sentencia = $this->db->prepare(
-            "SELECT course.*, subject.title as subject FROM course JOIN subject ON course.id_subject = subject.id WHERE course.id=? " );
+            "SELECT course.*, subject.title as subject " .
+            "FROM course JOIN subject ON course.id_subject = subject.id " .
+            "WHERE course.id=? " );
         $sentencia->execute( array( $id_course ) );
         return $sentencia->fetch( PDO::FETCH_OBJ );
     }
 
-    // public function InsertTask( $title, $description, $completed, $priority )
-    // {
-    //     $sentencia = $this->db->prepare( "INSERT INTO task(title, description, completed, priority) VALUES(?,?,?,?)" );
-    //     $sentencia->execute( array( $title, $description, $completed, $priority ) );
-    // }
+    public function addCourse($new_course)
+    {
+        $sentencia = $this->db->prepare( 
+            "INSERT INTO course(title, duration, time_commitent," . 
+            "                   id_subject, difficulty, topics) " .
+            "VALUES(?,?,?,?,?,?)" );
+        $sentencia->execute( $new_course );
+    }
 
     // public function DeleteTaskDelModelo( $task_id )
     // {

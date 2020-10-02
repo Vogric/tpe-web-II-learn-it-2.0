@@ -19,12 +19,13 @@ class AdminView
         $this->smarty->display( 'templates/admin.tpl' );
     }
 
-    public function showPrepareAddCourse( $courses )
+    public function showPrepareAddCourse( $courses, $subjects )
     {
         // Mostrar un formulario para agregar un curso nuevo
         // y Mostrar todos los cursos ya existentes.
         $this->smarty->assign( 'title_s', 'Admin: Add a course' );
         $this->smarty->assign( 'courses_s', $courses );
+        $this->smarty->assign( 'subjects_s', $subjects );
         $this->smarty->display( 'templates/prepare_add_course.tpl' );
     }
 

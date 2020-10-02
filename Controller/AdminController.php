@@ -1,16 +1,19 @@
 <?php
 require_once "./View/AdminView.php";
-require_once "./Model/CoursesModel.php";
+require_once "./Model/CourseModel.php";
+require_once "./Model/SubjectModel.php";
 
 class AdminController
 {
     private $view;
-    private $model;
+    private $course_model;
+    private $subject_model;
 
     public function __construct()
     {
         $this->view = new AdminView();
-        $this->model = new CoursesModel();
+        $this->course_model = new CourseModel();
+        $this->subject_model = new SubjectModel();
     }
 
     public function admin()
@@ -20,9 +23,38 @@ class AdminController
 
     public function prepareAddCourse()
     {
-        $courses = $this->model->getCourses();
-        $this->view->showPrepareAddCourse( $courses );
+        $courses = $this->course_model->getCourses();
+        $subjects = $this->subject_model->getSubjects();
+        $this->view->showPrepareAddCourse( $courses, $subjects );
     }
+
+    public function addCourse()
+    {
+        // array(6) {
+        //     ["title"]=> string(8) "Thinking"
+        //     ["duration"]=> string(1) "1"
+        //     ["time_commitent"]=> string(1) "1"
+        //     ["id_subject"]=> string(1) "2"
+        //     ["difficulty"]=> string(4) "High"
+        //     ["topics"]=> string(11) "Contemplate"
+        //   }
+        // $courses = $this->course_model->getCourses();
+        // $subjects = $this->subject_model->getSubjects();
+        // $this->view->showPrepareAddCourse( $courses, $subjects );
+        $new_course = array(
+            $_POST["title"],
+            ((int) $_POST["duration"]),
+            ((int) $_POST["time_commitent"]),
+            ((int) $_POST["id_subject"]),
+            $_POST["difficulty"],
+            $_POST["topics"]                    
+        );
+        $this->course_model->addCourse($new_course);
+        // Después de agregar vuelve a la página de agregar
+        // TODO Refactor a mejor lugar
+        header("Location: ".BASE_URL."admin/course/add");
+    }
+
 
     // public function courseDetail( $params = null )
     // {

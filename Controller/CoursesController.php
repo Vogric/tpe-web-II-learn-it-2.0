@@ -1,7 +1,7 @@
 <?php
 
 require_once "./View/CoursesView.php";
-require_once "./Model/CoursesModel.php";
+require_once "./Model/CourseModel.php";
 
 class CoursesController
 {
@@ -11,7 +11,7 @@ class CoursesController
     public function __construct()
     {
         $this->view = new CoursesView();
-        $this->model = new CoursesModel();
+        $this->model = new CourseModel();
     }
 
     // public function Courses()
