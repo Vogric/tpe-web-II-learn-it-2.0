@@ -18,10 +18,10 @@ class AdminController
         $this->view->showAdmin();
     }
 
-    public function courses()
+    public function prepareAddCourse()
     {
         $courses = $this->model->getCourses();
-        $this->view->showCourses( $courses );
+        $this->view->showPrepareAddCourse( $courses );
     }
 
     // public function courseDetail( $params = null )

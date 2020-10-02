@@ -26,9 +26,9 @@ $r->addRoute( "courses/:ID", "GET", "CoursesController", "courseDetail" );
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin
 $r->addRoute( "admin", "GET", "AdminController", "admin" );
 
-// learnit.com/admin/courses
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses
-$r->addRoute( "admin/courses", "GET", "AdminController", "courses" );
+// learnit.com/admin/course/add
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/course/add
+$r->addRoute( "admin/course/add", "GET", "AdminController", "prepareAddCourse" );
 
 
 // TODO learnit.com/admin/subjects/

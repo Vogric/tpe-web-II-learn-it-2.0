@@ -2,7 +2,7 @@
 <div class="container">
           <ul class="list-group">
               <li>
-              <a href="admin/courses/">Administrate Courses</a>
+              <a href="admin/course/add">Administrate Courses</a>
               </li>
               <li>
               <a href="admin/subjects/">Administrate Subjects</a>
