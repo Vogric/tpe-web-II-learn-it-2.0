@@ -27,7 +27,7 @@ class Route
             return false;
         }
         foreach ( $partsRoute as $key => $part ) {
-            if ( $part[0] != ":" ) {
+            if ( $part != "" && $part[0] != ":" ) {
                 if ( $part != $partsURL[$key] ) {
                     return false;
                 }

@@ -2,6 +2,7 @@
 require_once 'Controller/HomeController.php';
 require_once 'Controller/CoursesController.php';
 require_once 'Controller/AdminController.php';
+require_once 'Controller/RedirectController.php';
 require_once 'RouterClass.php';
 
 // CONSTANTES PARA RUTEO
@@ -22,6 +23,7 @@ $r->addRoute( "courses", "GET", "CoursesController", "courses" );
 $r->addRoute( "courses/:ID", "GET", "CoursesController", "courseDetail" );
 
 
+
 // learnit.com/admin
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin
 $r->addRoute( "admin", "GET", "AdminController", "admin" );
@@ -30,6 +32,11 @@ $r->addRoute( "admin", "GET", "AdminController", "admin" );
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/course/add
 $r->addRoute( "admin/course/add", "GET", "AdminController", "prepareAddCourse" );
 $r->addRoute( "admin/course/add", "POST", "AdminController", "addCourse" );
+
+$r->addRoute( "admin/course/","GET","RedirectController","goAdmin");
+$r->addRoute( "admin/courses/","GET","RedirectController","goAdmin");
+$r->addRoute( "admin/subject/","GET","RedirectController","goAdmin");
+$r->addRoute( "admin/subjects/","GET","RedirectController","goAdmin");
 
 // TODO learnit.com/admin/admin/courses/edit-delete 
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses/edit-delete
@@ -79,7 +86,14 @@ $r->addRoute("admin/subject/edit/:ID", "GET", "AdminController", "TODO");
 
 // learnit.com/
 //http: //localhost/web-2/TPE-WEB-2-%20Repo/
-$r->setDefaultRoute( "HomeController", "home" );
+// $r->addRoute("", "GET","RedirectController", "blank" );
+$r->addRoute("", "GET","HomeController", "home" );
 
+// TODO Usar para 404
+// $r->setDefaultRoute( "HomeController", "home" );
+
+// Debug a mano de ruteo
+//echo "<pre>r->route( \"" . $_GET['action'] . "\", \"" .
+//     $_SERVER['REQUEST_METHOD'] . "\" )</pre>";
 //run
 $r->route( $_GET['action'], $_SERVER['REQUEST_METHOD'] );
