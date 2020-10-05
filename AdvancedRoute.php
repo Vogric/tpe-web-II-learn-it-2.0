@@ -1,12 +1,12 @@
 <?php
-require_once 'Controller/HomeController.php';
-require_once 'Controller/CoursesController.php';
+require_once 'Controller/PublicController.php';
 require_once 'Controller/AdminController.php';
 require_once 'Controller/RedirectController.php';
 require_once 'RouterClass.php';
 
 // CONSTANTES PARA RUTEO
-define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER_PORT"] . dirname( $_SERVER["PHP_SELF"] ) . '/' );
+define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER_PORT"] . 
+                    dirname( $_SERVER["PHP_SELF"] ) . '/' );
 
 $r = new Router();
 
@@ -15,12 +15,12 @@ $r = new Router();
 
 // learnit.com/courses/
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/
-$r->addRoute( "courses", "GET", "CoursesController", "courses" );
+$r->addRoute( "courses", "GET", "PublicController", "courses" );
 
 // learnit.com/courses/:ID
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/2
 
-$r->addRoute( "courses/:ID", "GET", "CoursesController", "courseDetail" );
+$r->addRoute( "courses/:ID", "GET", "PublicController", "courseDetail" );
 
 
 
@@ -73,13 +73,13 @@ $r->addRoute("admin/subject/edit/:ID", "GET", "AdminController", "TODO");
 
 
 
-// $r->addRoute("mermelada", "GET", "CoursesController", "Home");
+// $r->addRoute("mermelada", "GET", "PublicController", "Home");
 
 //Esto lo veo en TasksView
-// $r->addRoute("insert", "POST", "CoursesController", "InsertTask");
+// $r->addRoute("insert", "POST", "PublicController", "InsertTask");
 
-// $r->addRoute("delete/:ID", "GET", "CoursesController", "BrarLaTaskQueVienePParametro");
-// $r->addRoute("completar/:ID", "GET", "CoursesController", "MarkAsCompletedTask");
+// $r->addRoute("delete/:ID", "GET", "PublicController", "BrarLaTaskQueVienePParametro");
+// $r->addRoute("completar/:ID", "GET", "PublicController", "MarkAsCompletedTask");
 
 //Advance
 // $r->addRoute("autocompletar", "GET", "CoursesAdvanceController", "AutoCompletar");
@@ -87,7 +87,7 @@ $r->addRoute("admin/subject/edit/:ID", "GET", "AdminController", "TODO");
 // learnit.com/
 //http: //localhost/web-2/TPE-WEB-2-%20Repo/
 // $r->addRoute("", "GET","RedirectController", "blank" );
-$r->addRoute("", "GET","HomeController", "home" );
+$r->addRoute("", "GET","PublicController", "home" );
 
 // TODO Usar para 404
 // $r->setDefaultRoute( "HomeController", "home" );

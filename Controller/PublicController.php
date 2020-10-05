@@ -1,17 +1,22 @@
 <?php
 
-require_once "./View/CoursesView.php";
+require_once "./View/PublicView.php";
 require_once "./Model/CourseModel.php";
 
-class CoursesController
+class PublicController
 {
     private $view;
     private $model;
 
     public function __construct()
     {
-        $this->view = new CoursesView();
+        $this->view = new PublicView();
         $this->model = new CourseModel();
+    }
+
+    public function home()
+    {
+        $this->view->showHome();
     }
 
     // public function Courses()
