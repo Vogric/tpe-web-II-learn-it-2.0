@@ -19,6 +19,12 @@ class PublicView
         $this->smarty->display( 'templates/home.tpl' );
     }
 
+    public function showlogin() 
+    {
+        $this->smarty->assign( 'title_s', 'LearnIT - Login' );
+        $this->smarty->display( 'templates/login.tpl' );
+    }
+
     public function showCourses( $courses )
     {
         $this->smarty->assign( 'title_s', 'Courses List' );

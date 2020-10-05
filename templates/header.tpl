@@ -13,3 +13,6 @@
             </head>
             <body>
             <h1>{$title_s}</h1>
+            <div>
+            <a href="login">Sign in</a>
+            </div>

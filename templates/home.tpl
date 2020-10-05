@@ -5,4 +5,5 @@
               <a href="courses/">Available courses</a>
               </li>
           </ul>
+</div>
 {include file="footer.tpl"}

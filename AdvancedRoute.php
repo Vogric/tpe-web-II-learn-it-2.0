@@ -69,25 +69,18 @@ $r->addRoute("admin/subject/delete/:ID", "GET", "AdminController", "TODO");
 $r->addRoute("admin/subject/edit/:ID", "GET", "AdminController", "TODO");
 
 
-
-
-
-
-// $r->addRoute("mermelada", "GET", "PublicController", "Home");
-
-//Esto lo veo en TasksView
-// $r->addRoute("insert", "POST", "PublicController", "InsertTask");
-
-// $r->addRoute("delete/:ID", "GET", "PublicController", "BrarLaTaskQueVienePParametro");
-// $r->addRoute("completar/:ID", "GET", "PublicController", "MarkAsCompletedTask");
-
-//Advance
-// $r->addRoute("autocompletar", "GET", "CoursesAdvanceController", "AutoCompletar");
-
 // learnit.com/
 //http: //localhost/web-2/TPE-WEB-2-%20Repo/
 // $r->addRoute("", "GET","RedirectController", "blank" );
+
+
+$r->addRoute("login", "GET","PublicController", "login" );
+$r->addRoute("sign-in-check", "POST","PublicController", "signInCheck" );
+
+// IMPORTANTE:
+// Ésta debe estar a lo último para evitar pisar a las anteriores
 $r->addRoute("", "GET","PublicController", "home" );
+
 
 // TODO Usar para 404
 // $r->setDefaultRoute( "HomeController", "home" );
