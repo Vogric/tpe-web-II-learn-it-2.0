@@ -28,45 +28,43 @@ $r->addRoute( "courses/:ID", "GET", "PublicController", "courseDetail" );
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin
 $r->addRoute( "admin", "GET", "AdminController", "admin" );
 
-// learnit.com/admin/course/add
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/course/add
-$r->addRoute( "admin/course/add", "GET", "AdminController", "prepareAddCourse" );
-$r->addRoute( "admin/course/add", "POST", "AdminController", "addCourse" );
+// learnit.com/admin/courses/add
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses/add
+$r->addRoute( "admin/courses/add", "GET", "AdminController", "prepareAddCourse" );
+$r->addRoute( "admin/courses/add", "POST", "AdminController", "addCourse" );
 
-$r->addRoute( "admin/course/","GET","RedirectController","goAdmin");
 $r->addRoute( "admin/courses/","GET","RedirectController","goAdmin");
-$r->addRoute( "admin/subject/","GET","RedirectController","goAdmin");
 $r->addRoute( "admin/subjects/","GET","RedirectController","goAdmin");
 
 // TODO learnit.com/admin/admin/courses/edit-delete 
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses/edit-delete
 $r->addRoute("admin/courses/edit-delete", "GET", "AdminController", "editDeleteCourses");
 
-// learnit.com/admin/course/delete/:ID
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/course/delete/:ID
-$r->addRoute("admin/course/delete/:ID", "GET", "AdminController", "deleteCourse");
-// learnit.com/admin/course/edit/:ID
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/course/edit/:ID
-$r->addRoute("admin/course/edit/:ID", "GET", "AdminController", "editCourse");
-$r->addRoute("admin/course/edit/:ID", "POST", "AdminController", "updateCourse");
+// learnit.com/admin/courses/delete/:ID
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses/delete/:ID
+$r->addRoute("admin/courses/delete/:ID", "GET", "AdminController", "deleteCourse");
+// learnit.com/admin/courses/edit/:ID
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/courses/edit/:ID
+$r->addRoute("admin/courses/edit/:ID", "GET", "AdminController", "editCourse");
+$r->addRoute("admin/courses/edit/:ID", "POST", "AdminController", "updateCourse");
 
 
 
-// TODO learnit.com/admin/admin/subject/add 
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subject/add
-$r->addRoute("admin/subject/add", "GET", "AdminController", "prepareAddSubject" );
-$r->addRoute("admin/subject/add", "POST", "AdminController", "addSubject" );
+// TODO learnit.com/admin/admin/subjects/add 
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subjects/add
+$r->addRoute("admin/subjects/add", "GET", "AdminController", "prepareAddSubject" );
+$r->addRoute("admin/subjects/add", "POST", "AdminController", "addSubject" );
 
 // TODO learnit.com/admin/admin/subjects/edit-delete 
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subjects/edit-delete
 $r->addRoute("admin/subjects/edit-delete", "GET", "AdminController", "editDeleteSubjects");
 
-// learnit.com/admin/subject/delete/:ID
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subject/delete/:ID
-$r->addRoute("admin/subject/delete/:ID", "GET", "AdminController", "TODO");
-// learnit.com/admin/subject/edit/:ID
-// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subject/edit/:ID
-$r->addRoute("admin/subject/edit/:ID", "GET", "AdminController", "TODO");
+// learnit.com/admin/subjects/delete/:ID
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subjects/delete/:ID
+$r->addRoute("admin/subjects/delete/:ID", "GET", "AdminController", "TODO");
+// learnit.com/admin/subjects/edit/:ID
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/admin/subjects/edit/:ID
+$r->addRoute("admin/subjects/edit/:ID", "GET", "AdminController", "TODO");
 
 
 // learnit.com/
