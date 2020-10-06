@@ -26,4 +26,11 @@ class SubjectModel
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
+    public function addSubject( $new_subject )
+    {
+        $sentence = $this->db->prepare(
+            "INSERT INTO subject(title) " . "VALUES(?)" );
+        $sentence->execute( $new_subject );
+    }
+
 }

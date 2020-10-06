@@ -40,30 +40,31 @@ class AdminController
         //   }
         $new_course = array(
             $_POST["title"],
-            ((int) $_POST["duration"]),
-            ((int) $_POST["time_commitent"]),
-            ((int) $_POST["id_subject"]),
+            ( (int) $_POST["duration"] ),
+            ( (int) $_POST["time_commitent"] ),
+            ( (int) $_POST["id_subject"] ),
             $_POST["difficulty"],
-            $_POST["topics"]                    
+            $_POST["topics"],
         );
-        $this->course_model->addCourse($new_course);
+        $this->course_model->addCourse( $new_course );
         // Después de agregar vuelve a la página de agregar
         // TODO Refactor a mejor lugar
-        header("Location: ".BASE_URL."admin/course/add");
+        header( "Location: " . BASE_URL . "admin/course/add" );
     }
 
-    public function editDeleteCourses() {
+    public function editDeleteCourses()
+    {
 
-        $courses = $this->course_model->getCourses();        
-        $this->view-> showEditDeleteCourses( $courses );
+        $courses = $this->course_model->getCourses();
+        $this->view->showEditDeleteCourses( $courses );
     }
 
     public function deleteCourse( $params )
     {
         $course_id = $params[':ID'];
-        $courses = $this->course_model->deleteCourse($course_id);
+        $courses = $this->course_model->deleteCourse( $course_id );
         // TODO Refactor a mejor lugar
-        header("Location: ".BASE_URL."admin/courses/edit-delete");
+        header( "Location: " . BASE_URL . "admin/courses/edit-delete" );
     }
 
     public function editCourse( $params )
@@ -88,34 +89,48 @@ class AdminController
 
         $course_data = array(
             $_POST["title"],
-            ((int) $_POST["duration"]),
-            ((int) $_POST["time_commitent"]),
-            ((int) $_POST["id_subject"]),
+            ( (int) $_POST["duration"] ),
+            ( (int) $_POST["time_commitent"] ),
+            ( (int) $_POST["id_subject"] ),
             $_POST["difficulty"],
-            $_POST["topics"]                    
+            $_POST["topics"],
         );
-        $this->course_model->updateCourse($course_id, $course_data);
+        $this->course_model->updateCourse( $course_id, $course_data );
         // Después de agregar vuelve a la página de agregar
         // TODO Refactor a mejor lugar
-        header("Location: ".BASE_URL."admin/courses/edit-delete");
+        header( "Location: " . BASE_URL . "admin/courses/edit-delete" );
     }
 
-
-
-    public function prepareAddSubject() {
-
-        // $courses = $this->course_model->getCourses();        
-        // $this->view->showPrepareAddCourse( $courses, $subjects );
-        echo "<h2>Prepare Add Subject: WIP</h2>";
+    public function prepareAddSubject()
+    {
+        $subjects = $this->subject_model->getSubjects();
+        $this->view->showPrepareAddSubject( $subjects );
     }
 
-    public function editDeleteSubjects() {
-
-        // $courses = $this->course_model->getCourses();        
-        // $this->view->showPrepareAddCourse( $courses, $subjects );
-        echo "<h2>Edit-Delete Subjects: WIP</h2>";
+    public function addSubject()
+    {
+        // array(6) {
+        //     ["title"]=> string(8) "Thinking"
+        //     ["id_subject"]=> string(1) "2"
+        //   }
+        $new_subject = array(
+            $_POST["title"],
+        );
+        $this->subject_model->addSubject( $new_subject );
+        header( "Location: " . BASE_URL . "admin/subject/add" );
     }
 
+    public function editDeleteSubjects()
+    {
+        $subjects = $this->subject_model->getSubjects();
+        $this->view->showEditDeleteSubjects( $subjects );
+    }
+
+    public function deleteSubject( $params )
+    {
+        $subject_id = $params[':ID'];
+        header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
+    }
 
     // public function courseDetail( $params = null )
     // {
