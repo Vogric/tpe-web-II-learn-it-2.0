@@ -3,6 +3,7 @@
 require_once "./View/PublicView.php";
 require_once "./Model/CourseModel.php";
 require_once "./Model/UserModel.php";
+require_once "./Model/SubjectModel.php";
 
 class PublicController
 {
@@ -14,13 +15,14 @@ class PublicController
     {
         $this->view = new PublicView();
         $this->model = new CourseModel();
+        $this->subject_model = new SubjectModel();
         $this->user_model = new USerModel();
     }
 
-    public function home()
-    {
-        $this->view->showHome();
-    }
+    // public function home()
+    // {
+    //     $this->view->showSubjects();
+    // }
 
     // public function Courses()
     // {
@@ -104,6 +106,12 @@ class PublicController
         }
     }
 
+    public function subjects()
+    {
+        $subjects = $this->subject_model->getSubjects();
+        $this->view->showSubjects( $subjects );
+    }
+
 
     public function courses()
     {
@@ -116,6 +124,10 @@ class PublicController
         $course_id = $params[':ID'];
         $course = $this->model->getCourseDetail( $course_id );
         $this->view->showCourseDetail( $course );
+    }
+
+    public function notFound(){
+        $this->view->show404NotFound();
     }
 
 }

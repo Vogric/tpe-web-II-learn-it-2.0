@@ -14,4 +14,5 @@
               <a href="admin/subjects/edit-delete">Edit/Delete Subjects</a>
               </li>
           </ul>
+</div>
 {include file="footer.tpl"}

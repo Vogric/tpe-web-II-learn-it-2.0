@@ -23,11 +23,12 @@ class PublicView
 
     }
 
-    public function showHome()
-    {
-        $this->smarty->assign( 'title_s', 'LearnIT' );
-        $this->smarty->display( 'templates/home.tpl' );
-    }
+    // Ahora home muestra subjects
+    // ¿llamamos desde controller o desde acá puede ser?
+    // public function showHome()
+    // {
+    //             $this->showSubjects();
+    // }
 
     public function showLogin( $error = null )
     {
@@ -56,5 +57,15 @@ class PublicView
         $this->smarty->assign( 'subjects_s', $subjects );
         $this->smarty->display( 'templates/subjects.tpl' );
     }
+
+
+    public function show404NotFound()
+    {
+        $this->smarty->assign( 'title_s', 'Learnit - Not found' );        
+        $this->smarty->display( 'templates/404_not_found.tpl' );
+    }
+
+
+    
 
 }

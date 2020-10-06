@@ -82,11 +82,11 @@ $r->addRoute("sign-in-check", "POST","PublicController", "signInCheck" );
 
 // IMPORTANTE:
 // Ésta debe estar a lo último para evitar pisar a las anteriores
-$r->addRoute("", "GET","PublicController", "home" );
+$r->addRoute("", "GET","PublicController", "subjects" );
 
 
 // TODO Usar para 404
-// $r->setDefaultRoute( "HomeController", "home" );
+$r->setDefaultRoute( "PublicController", "notFound" );
 
 // Debug a mano de ruteo
 //echo "<pre>r->route( \"" . $_GET['action'] . "\", \"" .
