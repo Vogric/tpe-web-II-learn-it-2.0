@@ -10,8 +10,14 @@ define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER
 
 $r = new Router();
 
-// TODO: Personalizar para nuestro TPE
 // rutas
+
+// learnit.com/
+// http: //localhost/web-2/TPE-WEB-2-%20Repo/
+// Nuestra "home"
+$r->addRoute("", "GET","PublicController", "subjects" );
+
+
 
 // learnit.com/courses/
 // http: //localhost/web-2/TPE-WEB-2-%20Repo/courses/
@@ -67,22 +73,12 @@ $r->addRoute("admin/subjects/delete/:ID", "GET", "AdminController", "TODO");
 $r->addRoute("admin/subjects/edit/:ID", "GET", "AdminController", "TODO");
 
 
-// learnit.com/
-//http: //localhost/web-2/TPE-WEB-2-%20Repo/
-// $r->addRoute("", "GET","RedirectController", "blank" );
-
-
 $r->addRoute("login", "GET","PublicController", "login" );
 $r->addRoute("logout", "GET","PublicController", "logout" );
 
 // Comentar ésta y descomentar la siguiente para generar hash manualmente
 $r->addRoute("sign-in-check", "POST","PublicController", "signInCheck" );
 // $r->addRoute("sign-in-check", "POST","PublicController", "getPassHash" );
-
-
-// IMPORTANTE:
-// Ésta debe estar a lo último para evitar pisar a las anteriores
-$r->addRoute("", "GET","PublicController", "subjects" );
 
 
 // TODO Usar para 404
