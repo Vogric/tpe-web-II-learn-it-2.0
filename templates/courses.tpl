@@ -1,9 +1,5 @@
 {include file="header.tpl"}
 <div class="container">
-
-          <ul class="list-group">
-
-              {foreach from=$courses_s item=course}
                 {* {if $tarea->completed eq 1}
                     <li class="list-group-item list-group-item-success">{$tarea->title|upper}<span class="badge badge-primary badge-pill">{$tarea->description}</span> <button type="button" class="btn btn-outline-danger"><a href="delete/{$tarea->id}">Borrar</a></button></li>
                 {else}
@@ -20,11 +16,20 @@
             [difficulty] => Introductory
             [topics] => Programming basics - Concepts - Computational thinking
             ) *}
-                <li>
-                <a href="courses/{$course->id}">{$course->title}</a>
-                </li>
-              {/foreach}
-          </ul>
+            <table>
+                <thead>
+                    <th>Course</th>
+                    <th>Subject</th>
+                <tbody>
+                    {foreach from=$courses_s item=course}
+                        <tr>
+                            <td><a href="courses/{$course->id}">{$course->title}</a></td>
+                            <td><a href="subjects/{$course->id}">{$course->subject}</a></td>
+                        </tr>
+                    {/foreach}
+                </tbody>
+                </thead>
+           </table>
           </div>
    
 {include file="footer.tpl"}
