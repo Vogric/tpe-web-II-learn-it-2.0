@@ -19,24 +19,21 @@ class Route
     public function match( $url, $verb )
     {
         if ( $this->verb != $verb ) {
-            return false;
+            return false;        
         }
         $partsURL = explode( "/", trim( $url, '/' ) );
         $partsRoute = explode( "/", trim( $this->url, '/' ) );
+
         if ( count( $partsRoute ) != count( $partsURL ) ) {
             return false;
         }
         foreach ( $partsRoute as $key => $part ) {
-            if ( $part != "" && $part[0] != ":" ) {
-                if ( $part != $partsURL[$key] ) {
-                    return false;
-                }
-
-            } //es un parametro
-            else {
+            if ( $part != "" && $part[0] == ":" ) {
+                //es un parametro
                 $this->params[$part] = $partsURL[$key];
+            } elseif ( $part != $partsURL[$key] ) {
+                return false;
             }
-
         }
         return true;
     }
