@@ -69,6 +69,7 @@ class PublicController
             if ( password_verify($password, $user->password)){
 
                 session_start();
+                $_SESSION["USER_ID"] = $user->id;
                 $_SESSION["EMAIL"] = $user->email;
                 //$_SESSION['LAST_ACTIVITY'] = time();
 
