@@ -32,10 +32,10 @@ class AdminView
     public function showEditDeleteCourses( $courses )
     {
         $this->smarty->assign( 'title_s', 'Admin: Edit / Delete courses' );
-        $this->smarty->assign( 'courses_s', $courses );        
+        $this->smarty->assign( 'courses_s', $courses );
         $this->smarty->display( 'templates/edit_delete_courses.tpl' );
     }
-    
+
     public function showEditCourse( $course, $subjects )
     {
         $this->smarty->assign( 'title_s', 'Admin: Edit a course' );
@@ -44,6 +44,27 @@ class AdminView
         $this->smarty->display( 'templates/edit_course.tpl' );
     }
 
+    public function showPrepareAddSubject( $subjects )
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Add a Subject' );
+        $this->smarty->assign( 'subjects_s', $subjects );
+        $this->smarty->display( 'templates/prepare_add_subject.tpl' );
+    }
+
+    
+    public function showEditDeleteSubjects( $subjects )
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Edit / Delete subjects' );
+        $this->smarty->assign( 'subjects_s', $subjects );
+        $this->smarty->display( 'templates/edit_delete_subjects.tpl' );
+    }
+
+    public function showEditSubject( $subjects )
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Edit a subject' );
+        $this->smarty->assign( 'subjects_s', $subjects );
+        $this->smarty->display( 'templates/edit_subject.tpl' );
+    }
 
     // public function ShowHomeLocation()
     // {

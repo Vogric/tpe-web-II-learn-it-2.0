@@ -29,39 +29,35 @@ class CourseModel
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
-    public function addCourse($new_course)
+    public function addCourse( $new_course )
     {
-        $sentence = $this->db->prepare( 
-            "INSERT INTO course(title, duration, time_commitent," . 
+        $sentence = $this->db->prepare(
+            "INSERT INTO course(title, duration, time_commitent," .
             "                   id_subject, difficulty, topics) " .
             "VALUES(?,?,?,?,?,?)" );
         $sentence->execute( $new_course );
     }
 
-    
-    public function deleteCourse($course_id)
+    public function deleteCourse( $course_id )
     {
         $sentence = $this->db->prepare( "DELETE FROM course WHERE id=?" );
         $sentence->execute( array( $course_id ) );
-    }    
+    }
 
-
-    public function updateCourse($course_id, $course_data)
+    public function updateCourse( $course_id, $course_data )
     {
         $sentence = $this->db->prepare(
             "UPDATE course SET" .
-            "       title = ?, duration = ?, time_commitent = ?," . 
+            "       title = ?, duration = ?, time_commitent = ?," .
             "       id_subject = ?, difficulty = ?, topics = ? " .
-            "WHERE course.id = ?");
+            "WHERE course.id = ?" );
 
         $values = $course_data;
-        array_push($values,$course_id);    
-    
+        array_push( $values, $course_id );
+
         $sentence->execute( $values );
     }
 
-
-    
     // public function MarkAsCompletedTask( $task_id )
     // {
     //     $sentence = $this->db->prepare( "UPDATE task SET completed=1 WHERE id=?" );

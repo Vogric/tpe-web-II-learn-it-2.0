@@ -19,7 +19,7 @@ class PublicView
         $this->smarty->display( 'templates/home.tpl' );
     }
 
-    public function showLogin($error = null)
+    public function showLogin( $error = null )
     {
         $this->smarty->assign( 'title_s', 'LearnIT - Login' );
         $this->smarty->assign( 'error', $error );
@@ -38,6 +38,13 @@ class PublicView
         $this->smarty->assign( 'title_s', $course->title );
         $this->smarty->assign( 'course_s', $course );
         $this->smarty->display( 'templates/course_detail.tpl' );
+    }
+
+    public function showSubjects( $subjects )
+    {
+        $this->smarty->assign( 'title_s', 'Subjects List' );
+        $this->smarty->assign( 'subjects_s', $subjects );
+        $this->smarty->display( 'templates/subjects.tpl' );
     }
 
     // public function ShowEditTask( $task )
