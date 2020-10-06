@@ -1,6 +1,6 @@
 
                 <div>                
-                TPE WEB 2 TUDAI | Braian Vogrič - André Pontis | LearnIT © 2020
+                <p class="copyright">TPE WEB TUDAI | André Pontis - Braian Vogrič | LearnIT © 2020</p>
                 </div>
                 </body>
             </html>
