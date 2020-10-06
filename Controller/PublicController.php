@@ -2,16 +2,19 @@
 
 require_once "./View/PublicView.php";
 require_once "./Model/CourseModel.php";
+require_once "./Model/UserModel.php";
 
 class PublicController
 {
     private $view;
     private $model;
+    private $user_model;
 
     public function __construct()
     {
         $this->view = new PublicView();
         $this->model = new CourseModel();
+        $this->user_model = new USerModel();
     }
 
     public function home()
@@ -32,20 +35,53 @@ class PublicController
         //     si es admin ir a admin
         //     sino ir a home
         // si no está logueado sigue la funcion
-        $this->view->showlogin();
+        $this->view->showLogin();
+    }
+
+    public function getPassHash()
+    {
+        echo "<h2>Sign In Check: WIP - Get Pass Hash</h2>";
+        echo "<pre>\n";
+        var_dump($_POST);        
+
+        $password=$_POST['password'];
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        echo "hash = $hash\n";
+        echo "</pre>\n";       
+        
     }
 
     public function signInCheck()
     {
         // TODO: Checkear Usuario y contraseña contra la base de datos
-        echo "<h2>Sign In Check: WIP</h2>";
-        echo "<pre>\n";
-        var_dump($_POST);
+        $email=$_POST['email'];
         $password=$_POST['password'];
 
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        echo "hash = $hash\n";
-        echo "</pre>\n";        
+       
+        // Chequear que el usuario exista en la base
+        $user = $this->user_model->getUserForEmail($email);
+
+        if( ! empty($user) ){
+            // Existe el usuario
+
+            // Chequear que la clave sea correcta    
+            if ( password_verify($password, $user->password)){
+
+                session_start();
+                $_SESSION["EMAIL"] = $user->email;
+                //$_SESSION['LAST_ACTIVITY'] = time();
+
+                // TODO: Redirigir según admin/ común, chequear ruteo de "home" vs ""
+                header("Location: ".BASE_URL);
+            }else{
+                $this->view->showLogin("Invalid password");
+            }
+
+        }else{
+            // No existe el user en la DB
+            $this->view->ShowLogin("User doesn't exist");
+        }
     }
 
 

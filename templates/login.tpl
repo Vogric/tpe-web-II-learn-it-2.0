@@ -1,5 +1,10 @@
 {include file="header.tpl"}
 <div class="container">
+    {if $error}
+    <div>
+       Error: {$error}
+    </div>
+    {/if}
     <form method="POST" action="sign-in-check">
 
         <div>
