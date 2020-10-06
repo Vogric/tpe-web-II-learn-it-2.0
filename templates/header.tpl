@@ -14,5 +14,9 @@
             <body>
             <h1>{$title_s}</h1>
             <div>
+            <a href="{$base_url}">Home</a>
+            <a href="courses">Courses</a>
+            <a href="courses-by-subject">Courses by subject</a>
+            <a href="admin">Admin</a>
             <a href="login">Sign in</a>
             </div>
