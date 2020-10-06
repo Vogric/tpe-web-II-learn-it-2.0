@@ -49,7 +49,7 @@ class AdminController
         $this->course_model->addCourse( $new_course );
         // Después de agregar vuelve a la página de agregar
         // TODO Refactor a mejor lugar
-        header( "Location: " . BASE_URL . "admin/course/add" );
+        header( "Location: " . BASE_URL . "admin/courses/add" );
     }
 
     public function editDeleteCourses()
@@ -117,7 +117,7 @@ class AdminController
             $_POST["title"],
         );
         $this->subject_model->addSubject( $new_subject );
-        header( "Location: " . BASE_URL . "admin/subject/add" );
+        header( "Location: " . BASE_URL . "admin/subjects/add" );
     }
 
     public function editDeleteSubjects()

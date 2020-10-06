@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<form action="admin/course/edit/{$course_s->id}" method="POST">
+<form action="admin/courses/edit/{$course_s->id}" method="POST">
    <input type="text" name="title" 
           value="{$course_s->title}" placeholder="Title"/>
    <input type="number" name="duration" 

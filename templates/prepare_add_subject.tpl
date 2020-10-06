@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<form action="admin/subject/add" method="POST">
+<form action="admin/subjects/add" method="POST">
    <input type="text" name="title" placeholder="Title"/>
    </select>
    <input type="submit" value="Add" />

@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<form action="admin/course/add" method="POST">
+<form action="admin/courses/add" method="POST">
    <input type="text" name="title" placeholder="Title"/>
    <input type="number" name="duration" placeholder="Duration"/>
    <input type="number" name="time_commitent" placeholder="Time commitent"/>

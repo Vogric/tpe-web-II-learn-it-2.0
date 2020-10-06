@@ -57,15 +57,4 @@ class PublicView
         $this->smarty->display( 'templates/subjects.tpl' );
     }
 
-    // public function ShowEditTask( $task )
-    // {
-    //     //TODO hacer con Smarty
-
-    // }
-
-    // public function ShowHomeLocation()
-    // {
-    //     header( "Location: " . BASE_URL . "home" );
-    // }
-
 }
