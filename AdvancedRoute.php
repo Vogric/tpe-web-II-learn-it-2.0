@@ -75,6 +75,7 @@ $r->addRoute("admin/subject/edit/:ID", "GET", "AdminController", "TODO");
 
 
 $r->addRoute("login", "GET","PublicController", "login" );
+$r->addRoute("logout", "GET","PublicController", "logout" );
 
 // Comentar ésta y descomentar la siguiente para generar hash manualmente
 $r->addRoute("sign-in-check", "POST","PublicController", "signInCheck" );

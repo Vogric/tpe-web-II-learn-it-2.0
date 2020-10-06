@@ -28,14 +28,36 @@ class PublicController
 
     // }
 
+    public function logout() {
+        if(session_status()!= PHP_SESSION_ACTIVE){
+            session_start();
+        }
+        session_destroy();
+        header("Location: " . BASE_URL);
+        die(); // Recomendado en slide
+    }
+
     public function login()
     {
-        // TODO: Acá debería chequear si ya está logueado
-        // si lo esta, chequear si es admin
-        //     si es admin ir a admin
-        //     sino ir a home
-        // si no está logueado sigue la funcion
-        $this->view->showLogin();
+        if(session_status()!= PHP_SESSION_ACTIVE){
+            session_start();
+            // echo "<br>Session Sarted<br>";
+        }
+        // echo '<pre>$_SESSION = ';
+        // var_dump($_SESSION);
+        // echo "</pre>";        
+        if(isset($_SESSION['IS_LOGGED'])){
+
+            // TODO: si es admin ir a admin
+            // $_SESSION['IS_ADMIN']
+            // sino ir a home
+
+            header("Location: ".BASE_URL);
+        }
+        else{
+            // si no está logueado 
+            $this->view->showLogin();
+        }
     }
 
     public function getPassHash()
@@ -57,18 +79,17 @@ class PublicController
         // TODO: Checkear Usuario y contraseña contra la base de datos
         $email=$_POST['email'];
         $password=$_POST['password'];
-
        
         // Chequear que el usuario exista en la base
         $user = $this->user_model->getUserForEmail($email);
 
         if( ! empty($user) ){
             // Existe el usuario
-
-            // Chequear que la clave sea correcta    
             if ( password_verify($password, $user->password)){
 
                 session_start();
+                $_SESSION["IS_LOGGED"] = 1; // True
+                //$_SESSION["IS_ADMIN"] = $user->is_admin // Futura columna
                 $_SESSION["USER_ID"] = $user->id;
                 $_SESSION["EMAIL"] = $user->email;
                 //$_SESSION['LAST_ACTIVITY'] = time();
@@ -78,9 +99,7 @@ class PublicController
             }else{
                 $this->view->showLogin("Invalid password");
             }
-
         }else{
-            // No existe el user en la DB
             $this->view->ShowLogin("User doesn't exist");
         }
     }
