@@ -121,13 +121,15 @@ class PublicController
 
     public function coursesBySubject()
     {
-        $courses = $this->model->getCourses();
+        $courses = $this->subject_model->getSubjectsWithCourses();
 
         # Armo una estructura de dos niveles
         # para facilitar el template
         # ref https://stackoverflow.com/a/12706454
         $grouped_courses = array();
         foreach ( $courses as $row ) {
+            // Todos los groups tendrán al menos una fila
+            // Si no había cursos, los atributos de `course` estarán en NULL
             $grouped_courses[$row->subject][] = $row;
         }
         $this->view->showCoursesBySubject( $grouped_courses );

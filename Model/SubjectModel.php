@@ -26,6 +26,16 @@ class SubjectModel
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
+    public function getSubjectsWithCourses() {
+        $sentence = $this->db->prepare(            
+            "SELECT subject.id as subject_id, subject.title as subject, course.*" .
+            "FROM subject LEFT JOIN course " .
+            "ON subject.id=course.id_subject ORDER BY subject.title" );
+
+        $sentence->execute();
+        return $sentence->fetchAll( PDO::FETCH_OBJ );
+    }
+
     public function addSubject( $new_subject )
     {
         $sentence = $this->db->prepare(
