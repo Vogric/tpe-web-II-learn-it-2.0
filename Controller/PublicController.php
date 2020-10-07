@@ -119,6 +119,22 @@ class PublicController
         $this->view->showCourses( $courses );
     }
 
+    public function coursesBySubject()
+    {
+        $courses = $this->model->getCourses();
+
+        # Armo una estructura de dos niveles
+        # para facilitar el template
+        # ref https://stackoverflow.com/a/12706454
+        $grouped_courses = array();
+        foreach ( $courses as $row ) {
+            $grouped_courses[$row->subject][] = $row;
+        }
+        $this->view->showCoursesBySubject( $grouped_courses );
+
+    }
+    
+
     public function courseDetail( $params = null )
     {
         $course_id = $params[':ID'];

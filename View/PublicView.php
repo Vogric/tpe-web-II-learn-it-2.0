@@ -57,6 +57,13 @@ class PublicView
         $this->smarty->assign( 'subjects_s', $subjects );
         $this->smarty->display( 'templates/subjects.tpl' );
     }
+    
+    public function showCoursesBySubject( $grouped_courses )
+    {
+        $this->smarty->assign( 'title_s', 'Courses grouped by subject' );
+        $this->smarty->assign( 'courses_by_subject_s', $grouped_courses );
+        $this->smarty->display( 'templates/courses_by_subject.tpl' );
+    }
 
 
     public function show404NotFound()

@@ -31,6 +31,12 @@ $r->addRoute( "courses", "GET", "PublicController", "courses" );
 $r->addRoute( "courses/:ID", "GET", "PublicController", "courseDetail" );
 
 
+// learnit.com/courses-by-subject/
+// http://localhost/web-2/TPE-WEB-2-%20Repo/courses-by-subject/
+$r->addRoute( "courses-by-subject", "GET", "PublicController", "coursesBySubject" );
+
+
+
 $r->addRoute("login", "GET","PublicController", "login" );
 $r->addRoute("logout", "GET","PublicController", "logout" );
 
