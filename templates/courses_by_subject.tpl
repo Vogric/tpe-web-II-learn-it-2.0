@@ -11,6 +11,6 @@
             {/foreach}
             </ul>
     {/foreach}
-    {* TODO mostrar subjects sin cursos }
+    {* TODO mostrar subjects sin cursos *}
 </div>   
 {include file="footer.tpl"}
