@@ -84,6 +84,9 @@ $r->addRoute( "admin/subjects/delete/:ID", "GET", "AdminController", "deleteSubj
 $r->addRoute( "admin/subjects/edit/:ID", "GET", "AdminController", "editSubject" );
 $r->addRoute( "admin/subjects/edit/:ID", "POST", "AdminController", "updateSubject" );
 
+// learnit.com/admin/subjects/delete-error
+$r->addRoute( "admin/subjects/delete-error", "GET", "AdminController", "deleteError" );
+
 // TODO Usar para 404
 $r->setDefaultRoute( "PublicController", "notFound" );
 

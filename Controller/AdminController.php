@@ -132,10 +132,16 @@ class AdminController
         $result = $this->subject_model->deleteSubject( $subject_id );
         if ( $result ) {
             header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
-            echo "Borro subject";
         } else {
-            echo "No borro subject";
+            //"No borra subject";
+            header( "Location: " . BASE_URL . "admin/subjects/delete-error" );
+
         }
+    }
+
+    public function deleteError()
+    {
+        $this->view->showDeleteError();
     }
 
     public function editSubject( $params )

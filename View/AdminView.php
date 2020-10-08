@@ -74,6 +74,15 @@ class AdminView
         $this->smarty->display( 'templates/edit_subject.tpl' );
     }
 
+    public function showDeleteError()
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Edit a subject' );
+        $this->smarty->assign( 'error_s', "You can't delete a subject if it does have courses assigned" );
+        $this->smarty->assign( 'back_s', "admin/subjects/edit-delete" );
+        $this->smarty->display( 'templates/error.tpl' );
+
+    }
+
     // public function ShowHomeLocation()
     // {
     //     header( "Location: " . BASE_URL . "home" );
