@@ -26,8 +26,9 @@ class SubjectModel
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
-    public function getSubjectsWithCourses() {
-        $sentence = $this->db->prepare(            
+    public function getSubjectsWithCourses()
+    {
+        $sentence = $this->db->prepare(
             "SELECT subject.id as subject_id, subject.title as subject, course.*" .
             "FROM subject LEFT JOIN course " .
             "ON subject.id=course.id_subject ORDER BY subject.title" );
@@ -41,6 +42,26 @@ class SubjectModel
         $sentence = $this->db->prepare(
             "INSERT INTO subject(title) " . "VALUES(?)" );
         $sentence->execute( $new_subject );
+    }
+
+    public function updateSubject( $course_id, $course_data )
+    {
+        $sentence = $this->db->prepare(
+            "UPDATE course SET" .
+            "       title = ?" .
+            "WHERE course.id = ?" );
+
+        $values = $course_data;
+        array_push( $values, $course_id );
+
+        $sentence->execute( $values );
+    }
+
+    public function deleteSubject( $subject_id )
+    {
+        $sentence = $this->db->prepare( "DELETE FROM subject WHERE id=?" );
+        $result = $sentence->execute( array( $subject_id ) );
+        return $result;
     }
 
 }

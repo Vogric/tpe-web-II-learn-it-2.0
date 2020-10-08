@@ -62,7 +62,7 @@ class AdminController
     public function deleteCourse( $params )
     {
         $course_id = $params[':ID'];
-        $courses = $this->course_model->deleteCourse( $course_id );
+        $this->course_model->deleteCourse( $course_id );
         // TODO Refactor a mejor lugar
         header( "Location: " . BASE_URL . "admin/courses/edit-delete" );
     }
@@ -129,47 +129,45 @@ class AdminController
     public function deleteSubject( $params )
     {
         $subject_id = $params[':ID'];
-        header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
+        $result = $this->subject_model->deleteSubject( $subject_id );
+        if ( $result ) {
+            header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
+            echo "Borro subject";
+        } else {
+            echo "No borro subject";
+        }
     }
 
-    // public function courseDetail( $params = null )
+    public function editSubject( $params )
+    {
+        $subject_id = $params[':ID'];
+        $subjects = $this->subject_model->getSubjects();
+        $this->view->showEditSubject( $subjects );
+    }
+
+    // public function updateSubject( $params )
     // {
-    //     $course_id = $params[':ID'];
-    //     $course = $this->model->getCourseDetail( $course_id );
-    //     $this->view->showCourseDetail( $course );
-    // }
+    //     $subject_id = $params[':ID'];
+    //     // array(6) {
+    //     //     ["title"]=> string(8) "Thinking"
+    //     //     ["duration"]=> string(1) "1"
+    //     //     ["time_commitent"]=> string(1) "1"
+    //     //     ["id_subject"]=> string(1) "2"
+    //     //     ["difficulty"]=> string(4) "High"
+    //     //     ["topics"]=> string(11) "Contemplate"
+    //     //   }
 
-    // public function InsertCourses()
-    // {
-
-    //     $completed = 0;
-    //     if ( isset( $_POST['input_completed'] ) ) {
-    //         $completed = 1;
-    //     }
-
-    //     $this->model->InsertCourses( $_POST['input_title'], $_POST['input_description'], $completed, $_POST['input_priority'] );
-    //     $this->view->ShowHomeLocation();
-    // }
-
-    // public function EditCourse( $params = null )
-    // {
-    //     $course_id = $params[':ID'];
-    //     $course = $this->model->GetCourse( $course_id );
-
-    //     $this->view->ShowEditCourse( $course );
-    // }
-
-    // public function BorrarLaTaskQueVienePorParametro( $params = null )
-    // {
-    //     $course_id = $params[':ID'];
-    //     $this->model->DeleteTaskDelModelo( $course_id );
-    //     $this->view->ShowHomeLocation();
-    // }
-
-    // public function MarkAsCompletedTask( $params = null )
-    // {
-    //     $course_id = $params[':ID'];
-    //     $this->model->MarkAsCompletedTask( $course_id );
-    //     $this->view->ShowHomeLocation();
+    //     $course_data = array(
+    //         $_POST["title"],
+    //         ( (int) $_POST["duration"] ),
+    //         ( (int) $_POST["time_commitent"] ),
+    //         ( (int) $_POST["id_subject"] ),
+    //         $_POST["difficulty"],
+    //         $_POST["topics"],
+    //     );
+    //     $this->course_model->updateCourse( $course_id, $course_data );
+    //     // Después de agregar vuelve a la página de agregar
+    //     // TODO Refactor a mejor lugar
+    //     header( "Location: " . BASE_URL . "admin/courses/edit-delete" );
     // }
 }

@@ -38,12 +38,6 @@ class CourseModel
         $sentence->execute( $new_course );
     }
 
-    public function deleteCourse( $course_id )
-    {
-        $sentence = $this->db->prepare( "DELETE FROM course WHERE id=?" );
-        $sentence->execute( array( $course_id ) );
-    }
-
     public function updateCourse( $course_id, $course_data )
     {
         $sentence = $this->db->prepare(
@@ -58,11 +52,10 @@ class CourseModel
         $sentence->execute( $values );
     }
 
-    // public function MarkAsCompletedTask( $task_id )
-    // {
-    //     $sentence = $this->db->prepare( "UPDATE task SET completed=1 WHERE id=?" );
-    //     $sentence->execute( array( $task_id ) );
-
-    // }
+    public function deleteCourse( $course_id )
+    {
+        $sentence = $this->db->prepare( "DELETE FROM course WHERE id=?" );
+        $sentence->execute( array( $course_id ) );
+    }
 
 }
