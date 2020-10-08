@@ -145,17 +145,17 @@ class AdminController
         $this->view->showEditSubject( $subject );
     }
 
-    // public function updateSubject( $params )
-    // {
-    //     $subject_id = $params[':ID'];
-    //     // array(1) {
-    //     //     ["title"]=> string(8) "Thinking"
-    //     //   }
+    public function updateSubject( $params )
+    {
+        $subject_id = $params[':ID'];
+        // array(1) {
+        //     ["title"]=> string(8) "Thinking"
+        //   }
 
-    //     $subject_data = array(
-    //         $_POST["title"],
-    //     );
-    //     $this->subject_model->updateSubject( $subject_id, $subject_data );
-    //     header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
-    // }
+        $subject_data = array(
+            $_POST["title"],
+        );
+        $this->subject_model->updateSubject( $subject_id, $subject_data );
+        header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
+    }
 }

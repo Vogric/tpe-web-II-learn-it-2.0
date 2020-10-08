@@ -45,18 +45,18 @@ class SubjectModel
         $sentence->execute( $new_subject );
     }
 
-    // public function updateSubject( $subject_id, $subject_data )
-    // {
-    //     $sentence = $this->db->prepare(
-    //         "UPDATE subject SET" .
-    //         "       title = ?" .
-    //         "WHERE subject.id = ?" );
+    public function updateSubject( $subject_id, $subject_data )
+    {
+        $sentence = $this->db->prepare(
+            "UPDATE subject SET" .
+            "       title = ?" .
+            "WHERE subject.id = ?" );
 
-    //     $values = $subject_data;
-    //     array_push( $values, $subject_id );
+        $values = $subject_data;
+        array_push( $values, $subject_id );
 
-    //     $sentence->execute( $values );
-    // }
+        $sentence->execute( $values );
+    }
 
     public function deleteSubject( $subject_id )
     {
