@@ -109,7 +109,7 @@ class AdminController
 
     public function addSubject()
     {
-        // array(6) {
+        // array(2) {
         //     ["title"]=> string(8) "Thinking"
         //     ["id_subject"]=> string(1) "2"
         //   }
@@ -141,33 +141,21 @@ class AdminController
     public function editSubject( $params )
     {
         $subject_id = $params[':ID'];
-        $subjects = $this->subject_model->getSubjects();
-        $this->view->showEditSubject( $subjects );
+        $subject = $this->subject_model->getSubjectById( $subject_id );
+        $this->view->showEditSubject( $subject );
     }
 
     // public function updateSubject( $params )
     // {
     //     $subject_id = $params[':ID'];
-    //     // array(6) {
+    //     // array(1) {
     //     //     ["title"]=> string(8) "Thinking"
-    //     //     ["duration"]=> string(1) "1"
-    //     //     ["time_commitent"]=> string(1) "1"
-    //     //     ["id_subject"]=> string(1) "2"
-    //     //     ["difficulty"]=> string(4) "High"
-    //     //     ["topics"]=> string(11) "Contemplate"
     //     //   }
 
-    //     $course_data = array(
+    //     $subject_data = array(
     //         $_POST["title"],
-    //         ( (int) $_POST["duration"] ),
-    //         ( (int) $_POST["time_commitent"] ),
-    //         ( (int) $_POST["id_subject"] ),
-    //         $_POST["difficulty"],
-    //         $_POST["topics"],
     //     );
-    //     $this->course_model->updateCourse( $course_id, $course_data );
-    //     // Después de agregar vuelve a la página de agregar
-    //     // TODO Refactor a mejor lugar
-    //     header( "Location: " . BASE_URL . "admin/courses/edit-delete" );
+    //     $this->subject_model->updateSubject( $subject_id, $subject_data );
+    //     header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
     // }
 }

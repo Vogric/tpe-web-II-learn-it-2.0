@@ -11,14 +11,14 @@ class AdminView
     {
         $this->smarty = new Smarty();
         $this->smarty->assign( 'base_url', BASE_URL );
-        
-        if(session_status()!= PHP_SESSION_ACTIVE){
+
+        if ( session_status() != PHP_SESSION_ACTIVE ) {
             session_start();
         }
 
-        if( isset($_SESSION['IS_LOGGED']) ) {
-            $this->smarty->assign( 'logged', 1);
-            $this->smarty->assign( 'email_s', $_SESSION['EMAIL']);
+        if ( isset( $_SESSION['IS_LOGGED'] ) ) {
+            $this->smarty->assign( 'logged', 1 );
+            $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
         }
     }
 
@@ -60,7 +60,6 @@ class AdminView
         $this->smarty->display( 'templates/prepare_add_subject.tpl' );
     }
 
-    
     public function showEditDeleteSubjects( $subjects )
     {
         $this->smarty->assign( 'title_s', 'Admin: Edit / Delete subjects' );
@@ -68,10 +67,10 @@ class AdminView
         $this->smarty->display( 'templates/edit_delete_subjects.tpl' );
     }
 
-    public function showEditSubject( $subjects )
+    public function showEditSubject( $subject )
     {
         $this->smarty->assign( 'title_s', 'Admin: Edit a subject' );
-        $this->smarty->assign( 'subjects_s', $subjects );
+        $this->smarty->assign( 'subject_s', $subject );
         $this->smarty->display( 'templates/edit_subject.tpl' );
     }
 

@@ -18,11 +18,12 @@ class SubjectModel
         return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
 
-    public function getSubjectDetail( $id_subject )
+    public function getSubjectById( $id_subject )
     {
         $sentence = $this->db->prepare(
-            "SELECT * as subject FROM subject WHERE id=? " );
+            "SELECT * FROM subject WHERE id=? " );
         $sentence->execute( array( $id_subject ) );
+
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
@@ -44,18 +45,18 @@ class SubjectModel
         $sentence->execute( $new_subject );
     }
 
-    public function updateSubject( $course_id, $course_data )
-    {
-        $sentence = $this->db->prepare(
-            "UPDATE course SET" .
-            "       title = ?" .
-            "WHERE course.id = ?" );
+    // public function updateSubject( $subject_id, $subject_data )
+    // {
+    //     $sentence = $this->db->prepare(
+    //         "UPDATE subject SET" .
+    //         "       title = ?" .
+    //         "WHERE subject.id = ?" );
 
-        $values = $course_data;
-        array_push( $values, $course_id );
+    //     $values = $subject_data;
+    //     array_push( $values, $subject_id );
 
-        $sentence->execute( $values );
-    }
+    //     $sentence->execute( $values );
+    // }
 
     public function deleteSubject( $subject_id )
     {
