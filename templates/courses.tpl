@@ -16,8 +16,8 @@
             [difficulty] => Introductory
             [topics] => Programming basics - Concepts - Computational thinking
             ) *}
-            <table class="table table-striped">
-                <thead class="thead-primary">
+            <table class="table table-sm .table-bordered">
+                <thead class="blue-gradient white-text">
                     <th scope="col">Course</th>
                     <th scope="col">Subject</th>
                 <tbody>
