@@ -16,10 +16,10 @@
             [difficulty] => Introductory
             [topics] => Programming basics - Concepts - Computational thinking
             ) *}
-            <table>
-                <thead>
-                    <th>Course</th>
-                    <th>Subject</th>
+            <table class="table table-striped">
+                <thead class="thead-primary">
+                    <th scope="col">Course</th>
+                    <th scope="col">Subject</th>
                 <tbody>
                     {foreach from=$courses_s item=course}
                         <tr>
@@ -31,5 +31,9 @@
                 </thead>
            </table>
           </div>
+
+
+          
+
    
 {include file="footer.tpl"}

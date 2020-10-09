@@ -220,7 +220,7 @@ button #5ef7a8bc88ba820004408f87 {
 
   /*TABLE-----------------------------------------------*/
 
-  /* .complete-table input {
+  .complete-table input {
     width: 15%;
   }
 
@@ -232,7 +232,7 @@ button #5ef7a8bc88ba820004408f87 {
   table th,
   table td {
     padding: 0.5625rem;
-  } */
+  }
 
   /* FOOTER INFORMATION-------------------------------------------------------*/
 
