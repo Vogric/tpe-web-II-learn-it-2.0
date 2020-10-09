@@ -90,7 +90,7 @@ class PublicController
             if ( password_verify($password, $user->password)){
 
                 session_start();
-                $_SESSION["IS_LOGGED"] = 1; // True
+                $_SESSION["IS_LOGGED"] = True;
                 //$_SESSION["IS_ADMIN"] = $user->is_admin // Futura columna
                 $_SESSION["USER_ID"] = $user->id;
                 $_SESSION["EMAIL"] = $user->email;
