@@ -11,10 +11,25 @@ class AdminController
 
     public function __construct()
     {
+        $this->redirectNotAdmins();        
         $this->view = new AdminView();
         $this->course_model = new CourseModel();
         $this->subject_model = new SubjectModel();
     }
+
+    
+    public function redirectNotAdmins()
+    {
+        if(session_status()!= PHP_SESSION_ACTIVE){
+            session_start();
+        }
+        if(!isset($_SESSION['IS_LOGGED'])){
+            header("location: ".BASE_URL.'login');
+            die();
+        }
+        // TODO: Verificar si es admin quien esta loggueado
+    }
+
 
     public function admin()
     {

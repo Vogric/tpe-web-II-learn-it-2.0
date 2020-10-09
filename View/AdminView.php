@@ -17,7 +17,7 @@ class AdminView
         }
 
         if ( isset( $_SESSION['IS_LOGGED'] ) ) {
-            $this->smarty->assign( 'logged', 1 );
+            $this->smarty->assign( 'logged', True );
             $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
         }
     }
