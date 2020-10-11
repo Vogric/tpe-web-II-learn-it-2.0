@@ -1,5 +1,14 @@
 {include file="header.tpl"}
 <div class="container">
+<div class="card card-image" style="background-image: url(https://appsamurai.com/wp-content/uploads/2017/06/indie-mobile-developer.png);">
+  <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+    <div class="py-5">
+      <h1 class="card-title h1 my-2 py-2">¡New courses available!</h1>
+      <p class="mb-4 pb-2 px-md-5 mx-md-5">Gain skills with online courses, certificates and degrees offered by the world's leading universities and companies.</p>
+      <a href="courses" class="btn peach-gradient">See list of courses</a>
+    </div>
+  </div>
+</div>
   <div class="row row-cols-1 row-cols-md-3">
   {foreach from=$subjects_s item=subject}
     <div class="col mb-4">
