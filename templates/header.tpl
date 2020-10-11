@@ -56,7 +56,7 @@
             {if isset($logged) }
                   <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
             <a class="btn btn-outline-green ml-4 mt-1 font-weight-bold">Current User: {$email_s}</a>
-            <a class="btn btn-outline-light ml-4 mt-1" href="logout">Sign out</a>
+            <a class="btn btn-outline-red ml-4 mt-1" href="logout">Sign out</a>
           {else}
             <a class="btn btn-outline-light ml-4 mt-1" href="login"><svg width="1.7em" height="1.7em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
