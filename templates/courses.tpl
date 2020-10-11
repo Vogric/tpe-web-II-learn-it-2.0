@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<div class="container">
+
                 {* {if $tarea->completed eq 1}
                     <li class="list-group-item list-group-item-success">{$tarea->title|upper}<span class="badge badge-primary badge-pill">{$tarea->description}</span> <button type="button" class="btn btn-outline-danger"><a href="delete/{$tarea->id}">Borrar</a></button></li>
                 {else}
@@ -30,10 +30,5 @@
                 </tbody>
                 </thead>
            </table>
-          </div>
-
-
-          
-
-   
+        
 {include file="footer.tpl"}
