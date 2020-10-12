@@ -76,12 +76,5 @@
       </div>
     </div>
   </div>
-
-  {* <div class="list-group">
-
-    <a href="admin/courses/add" class="list-group-item list-group-item-action list-group-item-primary">Add Course</a>
-    <a href="admin/courses/edit-delete" class="list-group-item list-group-item-action list-group-item-primary">Edit/Delete Courses</a>
-    <a href="admin/subjects/add" class="list-group-item list-group-item-action list-group-item-primary">Add Subject</a>
-    <a href="admin/subjects/edit-delete" class="list-group-item list-group-item-action list-group-item-primary">Edit/Delete Subjects</a> *}
-  </div>
-  {include file="footer.tpl"}
+</div>
+{include file="footer.tpl"}

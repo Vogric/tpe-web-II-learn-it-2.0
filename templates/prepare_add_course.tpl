@@ -42,22 +42,4 @@
     </tbody>
   </table>
 </div>
-
-{*
-<form action="admin/courses/add" method="POST">
-  <input type="text" name="title" placeholder="Title" />
-  <input type="number" name="duration" placeholder="Duration" />
-  <input type="number" name="time_commitent" placeholder="Time commitent" />
-  <select name="id_subject" />
-  {foreach from=$subjects_s item=subject}
-    <option value="{$subject->id}">
-      {$subject->title}
-    </option>
-  {/foreach}
-  </select>
-  <input type="text" name="difficulty" placeholder="Difficulty" />
-  <input type="text" name="topics" placeholder="Topics" />
-  <input type="submit" value="Add" />
-</form> *}
-
 {include file="footer.tpl"}
