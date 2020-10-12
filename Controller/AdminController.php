@@ -11,25 +11,23 @@ class AdminController
 
     public function __construct()
     {
-        $this->redirectNotAdmins();        
+        $this->redirectNotAdmins();
         $this->view = new AdminView();
         $this->course_model = new CourseModel();
         $this->subject_model = new SubjectModel();
     }
 
-    
     public function redirectNotAdmins()
     {
-        if(session_status()!= PHP_SESSION_ACTIVE){
+        if ( session_status() != PHP_SESSION_ACTIVE ) {
             session_start();
         }
-        if(!isset($_SESSION['IS_LOGGED'])){
-            header("location: ".BASE_URL.'login');
+        if ( !isset( $_SESSION['IS_LOGGED'] ) ) {
+            header( "location: " . BASE_URL . 'login' );
             die();
         }
         // TODO: Verificar si es admin quien esta loggueado
     }
-
 
     public function admin()
     {
@@ -45,14 +43,6 @@ class AdminController
 
     public function addCourse()
     {
-        // array(6) {
-        //     ["title"]=> string(8) "Thinking"
-        //     ["duration"]=> string(1) "1"
-        //     ["time_commitent"]=> string(1) "1"
-        //     ["id_subject"]=> string(1) "2"
-        //     ["difficulty"]=> string(4) "High"
-        //     ["topics"]=> string(11) "Contemplate"
-        //   }
         $new_course = array(
             $_POST["title"],
             ( (int) $_POST["duration"] ),
@@ -93,14 +83,6 @@ class AdminController
     public function updateCourse( $params )
     {
         $course_id = $params[':ID'];
-        // array(6) {
-        //     ["title"]=> string(8) "Thinking"
-        //     ["duration"]=> string(1) "1"
-        //     ["time_commitent"]=> string(1) "1"
-        //     ["id_subject"]=> string(1) "2"
-        //     ["difficulty"]=> string(4) "High"
-        //     ["topics"]=> string(11) "Contemplate"
-        //   }
 
         $course_data = array(
             $_POST["title"],
@@ -124,10 +106,6 @@ class AdminController
 
     public function addSubject()
     {
-        // array(2) {
-        //     ["title"]=> string(8) "Thinking"
-        //     ["id_subject"]=> string(1) "2"
-        //   }
         $new_subject = array(
             $_POST["title"],
         );
@@ -169,9 +147,6 @@ class AdminController
     public function updateSubject( $params )
     {
         $subject_id = $params[':ID'];
-        // array(1) {
-        //     ["title"]=> string(8) "Thinking"
-        //   }
 
         $subject_data = array(
             $_POST["title"],

@@ -12,9 +12,8 @@ class CourseModel
     public function getCourses()
     {
         $sentence = $this->db->prepare(
-            "SELECT course.*, subject.title as subject " .
-            "FROM course JOIN subject ON course.id_subject = subject.id " );
-
+            "SELECT course.*, subject.title as subject
+             FROM course JOIN subject ON course.id_subject = subject.id " );
         $sentence->execute();
         return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
@@ -22,9 +21,9 @@ class CourseModel
     public function getCourseDetail( $id_course )
     {
         $sentence = $this->db->prepare(
-            "SELECT course.*, subject.title as subject " .
-            "FROM course JOIN subject ON course.id_subject = subject.id " .
-            "WHERE course.id=? " );
+            "SELECT course.*, subject.title as subject
+             FROM course JOIN subject ON course.id_subject = subject.id
+             WHERE course.id=? " );
         $sentence->execute( array( $id_course ) );
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
@@ -32,19 +31,19 @@ class CourseModel
     public function addCourse( $new_course )
     {
         $sentence = $this->db->prepare(
-            "INSERT INTO course(title, duration, time_commitent," .
-            "                   id_subject, difficulty, topics) " .
-            "VALUES(?,?,?,?,?,?)" );
+            "INSERT INTO course(title, duration, time_commitent,
+                                id_subject, difficulty, topics)
+             VALUES(?,?,?,?,?,?)" );
         $sentence->execute( $new_course );
     }
 
     public function updateCourse( $course_id, $course_data )
     {
         $sentence = $this->db->prepare(
-            "UPDATE course SET" .
-            "       title = ?, duration = ?, time_commitent = ?," .
-            "       id_subject = ?, difficulty = ?, topics = ? " .
-            "WHERE course.id = ?" );
+            "UPDATE course SET
+                    title = ?, duration = ?, time_commitent = ?,
+                    id_subject = ?, difficulty = ?, topics = ?
+             WHERE course.id = ?" );
 
         $values = $course_data;
         array_push( $values, $course_id );

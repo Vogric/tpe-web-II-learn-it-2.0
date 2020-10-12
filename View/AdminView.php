@@ -82,10 +82,4 @@ class AdminView
         $this->smarty->display( 'templates/error.tpl' );
 
     }
-
-    // public function ShowHomeLocation()
-    // {
-    //     header( "Location: " . BASE_URL . "home" );
-    // }
-
 }
