@@ -11,24 +11,17 @@ class PublicView
     {
         $this->smarty = new Smarty();
         $this->smarty->assign( 'base_url', BASE_URL );
-        
-        if(session_status()!= PHP_SESSION_ACTIVE){
+
+        if ( session_status() != PHP_SESSION_ACTIVE ) {
             session_start();
         }
 
-        if( isset($_SESSION['IS_LOGGED']) ) {
-            $this->smarty->assign( 'logged', 1);
-            $this->smarty->assign( 'email_s', $_SESSION['EMAIL']);
-        } 
+        if ( isset( $_SESSION['IS_LOGGED'] ) ) {
+            $this->smarty->assign( 'logged', true );
+            $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
+        }
 
     }
-
-    // Ahora home muestra subjects
-    // ¿llamamos desde controller o desde acá puede ser?
-    // public function showHome()
-    // {
-    //             $this->showSubjects();
-    // }
 
     public function showLogin( $error = null )
     {
@@ -57,7 +50,7 @@ class PublicView
         $this->smarty->assign( 'subjects_s', $subjects );
         $this->smarty->display( 'templates/subjects.tpl' );
     }
-    
+
     public function showCoursesBySubject( $grouped_courses )
     {
         $this->smarty->assign( 'title_s', 'Courses grouped by subject' );
@@ -65,14 +58,10 @@ class PublicView
         $this->smarty->display( 'templates/courses_by_subject.tpl' );
     }
 
-
     public function show404NotFound()
     {
-        $this->smarty->assign( 'title_s', 'Learnit - Not found' );        
+        $this->smarty->assign( 'title_s', 'Learnit - Not found' );
         $this->smarty->display( 'templates/404_not_found.tpl' );
     }
-
-
-    
 
 }
