@@ -15,8 +15,8 @@
             </select></th>
           <th><input type="text" name="difficulty" placeholder="Difficulty" /></th>
           <th><input type="text" name="topics" placeholder="Topics" /></th>
-          <th><input type="button" class="btn blue-gradient btn-sm" type="submit" value="Add" /></th>
-          </table>
+          <th><input class="btn blue-gradient btn-sm" type="submit" value="Add" /></th>
+        </table>
   </form>
   <h2>Available courses</h2>
   <table class="table table-sm .table-bordered table-hover">
