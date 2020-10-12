@@ -29,10 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="courses">Courses</a>
+            <a class="nav-link" href="#">Courses</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="courses-by-subject">Courses by subject</a>
@@ -40,7 +37,7 @@
         </ul>
         <div class="form-inline my-2 my-lg-0"">
             {if isset($logged) }
-                          <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
+                                  <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
             <a class="btn btn-outline-green ml-4 mt-1 font-weight-bold">Current User: {$email_s}</a>
             <a class="btn btn-outline-red ml-4 mt-1" href="logout">Sign out</a>
           {else}
@@ -58,45 +55,3 @@
       </div>
     </nav>
   </header>
-
-
-
-
-
-
-
-  {* <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">WebSiteName</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </nav>
-  </header> *}
-
-
-
-
-
-  {* <div>
-    <a href="{$base_url}">Home</a>
-    <a href="courses">Courses</a>
-    <a href="courses-by-subject">Courses by subject</a>
-    {if isset($logged) }
-      <!--TODO: Mostrar sólo para admins-->
-      <a href="admin">Admin</a>
-      {$email_s}
-      <a href="logout">Sign out</a>
-    {else}
-      <a href="login">Sign in</a>
-    {/if}
-  </div> *}

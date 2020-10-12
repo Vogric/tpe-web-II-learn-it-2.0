@@ -20,11 +20,7 @@ $r = new Router();
 // learnit.com/
 // http://localhost/web-2/TPE-WEB-2-%20Repo/
 // Nuestra "home"
-$r->addRoute( "", "GET", "PublicController", "subjects" );
-
-// learnit.com/courses/
-// http://localhost/web-2/TPE-WEB-2-%20Repo/courses/
-$r->addRoute( "courses", "GET", "PublicController", "courses" );
+$r->addRoute( "", "GET", "PublicController", "courses" );
 
 // learnit.com/courses/:ID
 // http://localhost/web-2/TPE-WEB-2-%20Repo/courses/2
