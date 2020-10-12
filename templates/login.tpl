@@ -46,11 +46,11 @@
               </div>
             {/if}
             <form method="POST" action="sign-in-check">
-              <input type="email" id="Form-email5" class="form-control validate white-text">
+              <input type="email" name="email" id="Form-email5" class="form-control validate white-text">
               <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
           </div>
           <div class="md-form pb-3">
-            <input type="password" id="Form-pass5" class="form-control validate white-text">
+            <input type="password" name="password" id="Form-pass5" class="form-control validate white-text">
             <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
           </div>
           <div class="row d-flex align-items-center mb-4">

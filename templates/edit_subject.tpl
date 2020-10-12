@@ -7,11 +7,11 @@
     </div>
   </div>
   <div class="text-center py-3 px-4">
-    <form action="admin/subjects/edit/{$subject_s->id}" method=" POST">
+    <form action="admin/subjects/edit/{$subject_s->id}" method="POST">
       <table class="table table-sm .table-bordered table-hover">
         <input type="text" name="title" value="{$subject_s->title}" placeholder="Title" />
-        <input type="button" class="btn blue-gradient btn-sm" type="submit" value="Update" />
-        <input type="button" class="btn purple-gradient btn-sm" type="reset" value="Reset" />
+        <input class="btn blue-gradient btn-sm" type="submit" value="Update" />
+        <input class="btn purple-gradient btn-sm" type="reset" value="Reset" />
       </table>
     </form>
     <a href="admin/subjects/edit-delete" type="button" class="btn blue-gradient btn-sm">Edit/Delete Subjects</a>
