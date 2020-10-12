@@ -12,8 +12,8 @@
             <tr>
               <td>{$course->title}</td>
               <td>{$course->subject}</td>
-              <td><a href="admin/courses/edit/{$course->id} type=" button" class="btn yellow btn-sm">Edit</a></td>
-              <td><a href=" admin/courses/delete/{$course->id} type="button" class="btn red btn-sm">Delete</a></td>
+              <td><a href="admin/courses/edit/{$course->id}" class="btn yellow btn-sm">Edit</a></td>
+              <td><a href=" admin/courses/delete/{$course->id}" class="btn red btn-sm">Delete</a></td>
             </tr>
           {/foreach}
         </tbody>

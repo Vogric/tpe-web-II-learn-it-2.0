@@ -10,8 +10,8 @@
               {foreach from=$subjects_s item=subject}
                 <tr>
                    <td>{$subject->title}</td>                                    
-                   <td><a href="admin/subjects/edit/{$subject->id} button" class="btn yellow btn-sm">Edit</a></td>
-                   <td><a href="admin/subjects/delete/{$subject->id} button" class="btn red btn-sm">Delete</a></td>
+                   <td><a href="admin/subjects/edit/{$subject->id}"  class="btn yellow btn-sm">Edit</a></td>
+                   <td><a href="admin/subjects/delete/{$subject->id}" class="btn red btn-sm">Delete</a></td>
                 </tr>
               {/foreach}
           </tbody>
