@@ -1,10 +1,12 @@
 {include file="header.tpl"}
 <div class="container">
-  <div class="text-center py-3 px-4">
-    <div class="py-5">
-      <h1 class="card-title h1 my-1 py-1">Courses by subject</h1>
-      <p class="mb-4 pb-2 px-md-5 mx-md-5">Gain skills with online courses, certificates and degrees offered by the world's leading universities and companies.</p>
-      <a href="courses" class="btn blue-gradient">See list of courses</a>
+  <div class="card card-image" style="background-image: url(https://hourcycles.club/wp-content/uploads/2020/02/designer-developer-1200x616-1.jpg);">
+    <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+      <div class="py-5">
+        <h1 class="card-title h1 my-2 py-2">Courses by subject</h1>
+        <p class="mb-4 pb-2 px-md-5 mx-md-5">Gain skills with online courses, certificates and degrees offered by the world's leading universities and companies.</p>
+        <a href="#" class="btn blue-gradient">See list of courses</a>
+      </div>
     </div>
   </div>
   <div class="card-columns">

@@ -32,12 +32,12 @@
             <a class="nav-link" href="#">Courses</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="courses-by-subject">Courses by subject</a>
+            <a class="nav-link" href="courses-by-subject">Subjects</a>
           </li>
         </ul>
         <div class="form-inline my-2 my-lg-0"">
             {if isset($logged) }
-                                  <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
+                                    <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
             <a class="btn btn-outline-green ml-4 mt-1 font-weight-bold">Current User: {$email_s}</a>
             <a class="btn btn-outline-red ml-4 mt-1" href="logout">Sign out</a>
           {else}

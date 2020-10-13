@@ -11,7 +11,7 @@
         <li class="list-group-item  bg-transparent">DIFFICULTY: {$course_s->difficulty}</li>
         <li class="list-group-item  bg-transparent">TOPIC(S): {$course_s->topics}</li>
       </ul>
-      <a class="btn blue-gradient" href="courses/">Courses list</a>
+      <a class="btn blue-gradient" href="#">Courses list</a>
     </div>
   </div>
 </div>
