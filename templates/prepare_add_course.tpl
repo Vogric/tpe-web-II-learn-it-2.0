@@ -2,8 +2,8 @@
 <div class="container">
   <div class="card mx-xl-5">
     <div class="card-body">
-      <form>
-        <p class="h4 text-center py-4">Add a new course</p>
+      <form action="admin/courses/add" method="POST">
+        <h2 class="h2 text-center py-4">Add a new course</h2>
         <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Title</label>
         <input type="text" name="title" placeholder="Title" id="defaultFormCardNameEx" class="form-control">
         <br>
@@ -15,7 +15,8 @@
         <br>
         <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Subject</label>
         <br>
-        <select name="id_subject" />
+        <select name="id_subject" class="browser-default custom-select" />
+        <option value="" disabled selected>Choose a subject</option>
         {foreach from=$subjects_s item=subject}
           <option value="{$subject->id}">
             {$subject->title}
@@ -35,29 +36,7 @@
       </form>
     </div>
   </div>
-
-
-  <form action="admin/courses/add" method="POST" class="form-inline">
-    <h1 class="display-4">Add a new course<h1>
-        <input type="text" name="title" placeholder="Title" />
-        <input type="number" name="duration" placeholder="Duration" />
-        <input type="number" name="time_commitent" placeholder="Time commitent" />
-        <select name="id_subject" />
-        {foreach from=$subjects_s item=subject}
-          <option value="{$subject->id}">
-            {$subject->title}
-          </option>
-        {/foreach}
-        </select>
-        <input type="text" name="difficulty" placeholder="Difficulty" />
-        <input type="text" name="topics" placeholder="Topics" />
-        <input class="btn blue-gradient btn-sm" type="submit" value="Add" />
-        <button class="btn blue-gradient btn-sm" type="submit" class="btn btn-primary mb-2" value="Add">Add</button>
-  </form>
-
-
-
-  <h2>Available courses</h2>
+  <h3 class="h3 text-center py-4">Available courses</h3>
   <table class="table table-sm .table-bordered table-hover">
     <thead class="blue-gradient white-text">
       <th>Title</th>
