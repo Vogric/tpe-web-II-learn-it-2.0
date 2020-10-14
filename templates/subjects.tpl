@@ -3,7 +3,7 @@ DESCOMENTAR CODIGO PARA TENERLO IGUAL A courses_by_subject.tpl en caso de cambia
 
 {include file="header.tpl"}
 <div class="container">
-  <div class="card card-image" style="background-image: url(./Images/courses/illustrations/card-subjects-background.jpg);">
+  <div class="card card-image" style="background-image: url(./images/courses/illustrations/card-subjects-background.jpg);">
     <div class="text-white text-center rgba-stylish-strong py-5 px-4">
       <div class="py-5">
         <h1 class="card-title h1 my-2 py-2">Courses by subject</h1>
@@ -16,7 +16,7 @@ DESCOMENTAR CODIGO PARA TENERLO IGUAL A courses_by_subject.tpl en caso de cambia
     {foreach $courses_by_subject_s as $subject => $courses}
       {assign var="subject_id" value="{$courses[0]->subject_id}" }
       <div class="card">
-        <img src="./Images/subjects/card-image.jpg" class="card-img-top" alt="card-image">
+        <img src="./images/subjects/card-image.jpg" class="card-img-top" alt="card-image">
         <div class="card-body">
           <h5 class="card-title" id="subject-{$subject_id}">{$subject}</h5>
           <p class="card-text">Information about the subject</p>

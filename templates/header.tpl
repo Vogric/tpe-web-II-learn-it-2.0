@@ -14,7 +14,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-  <link rel="icon" type="image/png" href="./Images/logo-learnit.png" />
+  <link rel="icon" type="image/png" href="./images/logo-learnit.png" />
   <link rel="stylesheet" href="./css/style.css">
 
   <title>{$title_s}</title>
@@ -23,7 +23,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"><img class="logo row ml-1 mb-1" src="./Images/logo-learnit.png" alt="logo" style="width: 70px"></a>
+      <a class="navbar-brand" href="#"><img class="logo row ml-1 mb-1" src="./images/logo-learnit.png" alt="logo" style="width: 70px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
