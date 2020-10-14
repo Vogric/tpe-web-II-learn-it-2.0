@@ -4,7 +4,6 @@
     <div class="card-body">
       <form action="admin/subjects/add" method="POST">
         <h2 class="h2 text-center py-4">Add a new subject</h2>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Title</label>
         <input type="text" name="title" placeholder="Title" id="defaultFormCardNameEx" class="form-control">
         <div class="text-center py-4 mt-3">
           <button class="btn btn-outline-blue" type="submit">Add subject<i class="fa fa-paper-plane-o ml-2"></i></button>

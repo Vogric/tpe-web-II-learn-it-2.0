@@ -4,16 +4,15 @@
     <div class="card-body">
       <form action="admin/courses/add" method="POST">
         <h2 class="h2 text-center py-4">Add a new course</h2>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Title</label>
         <input type="text" name="title" placeholder="Title" id="defaultFormCardNameEx" class="form-control">
         <br>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Duration</label>
         <input type="number" name="duration" placeholder="Duration" id="defaultFormCardNameEx" class="form-control">
         <br>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Time commitent</label>
         <input type="number" name="time_commitent" placeholder="Time commitent" id="defaultFormCardNameEx" class="form-control">
         <br>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Subject</label>
+        <input type="text" name="difficulty" placeholder="Difficulty" id="defaultFormCardNameEx" class="form-control">
+        <br>
+        <input type="text" name="topics" placeholder="Topics" id="defaultFormCardNameEx" class="form-control">
         <br>
         <select name="id_subject" class="browser-default custom-select" />
         <option value="" disabled selected>Choose a subject</option>
@@ -23,13 +22,6 @@
           </option>
         {/foreach}
         </select>
-        <br>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Difficulty</label>
-        <input type="text" name="difficulty" placeholder="Difficulty" id="defaultFormCardNameEx" class="form-control">
-        <br>
-        <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Topics</label>
-        <input type="text" name="topics" placeholder="Topics" id="defaultFormCardNameEx" class="form-control">
-        <br>
         <div class="text-center py-4 mt-3">
           <button class="btn btn-outline-blue" type="submit">Add course<i class="fa fa-paper-plane-o ml-2"></i></button>
         </div>

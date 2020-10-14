@@ -1,20 +1,19 @@
 {include file="header.tpl"}
-<div class="container">
-  <div class="text-center py-3 px-4">
-    <div class="py-2">
-      <h1 class="card-title h1 my-1 py-1">Edit or delete subjects</h1>
-      <p class="mb-4 pb-2 px-md-5 mx-md-5">Edit or delete any of the subjects that are available on the platform.</p>
-    </div>
-  </div>
-  <div class="text-center py-3 px-4">
+<div class="card mx-xl-5">
+  <div class="card-body">
     <form action="admin/subjects/edit/{$subject_s->id}" method="POST">
-      <table class="table table-sm .table-bordered table-hover">
-        <input type="text" name="title" value="{$subject_s->title}" placeholder="Title" />
-        <input class="btn blue-gradient btn-sm" type="submit" value="Update" />
-        <input class="btn purple-gradient btn-sm" type="reset" value="Reset" />
-      </table>
+      <h2 class="h2 text-center py-4">Edit or delete subjects</h2>
+      <input type="text" name="title" value="{$subject_s->title}" placeholder="Title" id="defaultFormCardNameEx" class="form-control" />
+      <div class="text-center py-3 px-4">
+        <div class="py-2">
+          <input class="btn blue-gradient btn-sm" type="submit" value="Update" />
+          <input class="btn purple-gradient btn-sm" type="reset" value="Reset" />
+        </div>
+      </div>
     </form>
-    <a href="admin/subjects/edit-delete" type="button" class="btn blue-gradient btn-sm">Edit/Delete Subjects</a>
+    <div class="text-center">
+      <a href="admin/subjects/edit-delete" type="button" class="btn blue-gradient btn-sm">Edit/Delete Subjects</a>
+    </div>
   </div>
 </div>
 {include file="footer.tpl"}
