@@ -32,7 +32,7 @@ class PublicView
 
     public function showCourses( $courses )
     {
-        $this->smarty->assign( 'title_s', 'Courses List' );
+        $this->smarty->assign( 'title_s', 'LearnIT - Courses' );
         $this->smarty->assign( 'courses_s', $courses );
         $this->smarty->display( 'templates/courses.tpl' );
     }
@@ -53,7 +53,7 @@ class PublicView
 
     public function showCoursesBySubject( $grouped_courses )
     {
-        $this->smarty->assign( 'title_s', 'Courses grouped by subject' );
+        $this->smarty->assign( 'title_s', 'LearnIT - Subjects' );
         $this->smarty->assign( 'courses_by_subject_s', $grouped_courses );
         $this->smarty->display( 'templates/courses_by_subject.tpl' );
     }

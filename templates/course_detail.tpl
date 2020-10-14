@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-<div class="card card-image" style="background-image: url(https://www.adrpanama.com/wp-content/uploads/2018/08/grado-tecnicas-aplicaciones-software.jpg);">
+<div class="card card-image" style="background-image: url(./images/courses/detail/background-detail.jpeg);">
   <div class="text-white text-center rgba-stylish-strong py-4 px-4">
     <div class="py-4">
       <h2 class="card-title h2 my-1 py-3"><strong>{$course_s->title}</strong></h2>

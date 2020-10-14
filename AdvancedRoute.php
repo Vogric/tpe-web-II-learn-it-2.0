@@ -25,9 +25,9 @@ $r->addRoute( "", "GET", "PublicController", "courses" );
 // http://localhost/web-2/TPE-WEB-2-%20Repo/courses/2
 $r->addRoute( "courses/:ID", "GET", "PublicController", "courseDetail" );
 
-// learnit.com/courses-by-subject/
-// http://localhost/web-2/TPE-WEB-2-%20Repo/courses-by-subject/
-$r->addRoute( "courses-by-subject", "GET", "PublicController", "coursesBySubject" );
+// learnit.com/subjects/
+// http://localhost/web-2/TPE-WEB-2-%20Repo/subjects/
+$r->addRoute( "subjects", "GET", "PublicController", "coursesBySubject" );
 
 $r->addRoute( "login", "GET", "PublicController", "login" );
 $r->addRoute( "logout", "GET", "PublicController", "logout" );
