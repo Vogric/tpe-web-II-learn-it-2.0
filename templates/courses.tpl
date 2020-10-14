@@ -22,7 +22,7 @@
           <div class="card-body">
             <h4 class="card-title"><a href="courses/{$course->id}">{$course->title}</a></h4>
             {* Ver 25 *}
-            <p class="card-text"><a href="subjects/{$course->subject}">{$course->subject}</a></p>
+            <p class="card-text"><a href="subjects/#{$course->id_subject}">{$course->subject}</a></p>
             <a class="btn blue-gradient btn-md" href="courses/{$course->id}">See more</a>
           </div>
         </div>

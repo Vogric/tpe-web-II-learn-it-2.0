@@ -15,7 +15,7 @@
       <div class="card">
         <img src="./images/subjects/card-image.jpg" class="card-img-top" alt="card-image">
         <div class="card-body">
-          <h5 class="card-title" id="subject-{$subject_id}">{$subject}</h5>
+          <h5 class="card-title" id="{$subject_id}">{$subject}</h5>
           <p class="card-text">Information about the subject</p>
           {if $courses[0]->id }
             <ul>
