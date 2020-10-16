@@ -19,6 +19,8 @@ class AdminView
         if ( isset( $_SESSION['IS_LOGGED'] ) ) {
             $this->smarty->assign( 'logged', true );
             $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
+        } else {
+            $this->smarty->assign( 'logged', false );
         }
     }
 
@@ -76,10 +78,9 @@ class AdminView
 
     public function showDeleteError()
     {
-        $this->smarty->assign( 'title_s', 'Admin: Edit a subject' );
+        $this->smarty->assign( 'title_s', 'Admin: Delete Subject Error' );
         $this->smarty->assign( 'error_s', "You can't delete a subject if it does have courses assigned" );
         $this->smarty->assign( 'back_s', "admin/subjects/edit-delete" );
         $this->smarty->display( 'templates/error.tpl' );
-
     }
 }

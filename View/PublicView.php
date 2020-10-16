@@ -19,6 +19,8 @@ class PublicView
         if ( isset( $_SESSION['IS_LOGGED'] ) ) {
             $this->smarty->assign( 'logged', true );
             $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
+        } else {
+            $this->smarty->assign( 'logged', false );
         }
 
     }

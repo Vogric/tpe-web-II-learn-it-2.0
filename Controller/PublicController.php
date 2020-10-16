@@ -19,45 +19,30 @@ class PublicController
         $this->user_model = new USerModel();
     }
 
-    // public function home()
-    // {
-    //     $this->view->showSubjects();
-    // }
-
-    // public function Courses()
-    // {
-    //     $this->view->HelloWorld();
-
-    // }
-
-    public function logout() {
-        if(session_status()!= PHP_SESSION_ACTIVE){
+    public function logout()
+    {
+        if ( session_status() != PHP_SESSION_ACTIVE ) {
             session_start();
         }
         session_destroy();
-        header("Location: " . BASE_URL);
+        header( "Location: " . BASE_URL );
         die(); // Recomendado en slide
     }
 
     public function login()
     {
-        if(session_status()!= PHP_SESSION_ACTIVE){
+        if ( session_status() != PHP_SESSION_ACTIVE ) {
             session_start();
-            // echo "<br>Session Sarted<br>";
         }
-        // echo '<pre>$_SESSION = ';
-        // var_dump($_SESSION);
-        // echo "</pre>";        
-        if(isset($_SESSION['IS_LOGGED'])){
+        if ( isset( $_SESSION['IS_LOGGED'] ) ) {
 
             // TODO: si es admin ir a admin
             // $_SESSION['IS_ADMIN']
             // sino ir a home
 
-            header("Location: ".BASE_URL);
-        }
-        else{
-            // si no está logueado 
+            header( "Location: " . BASE_URL );
+        } else {
+            // si no está logueado
             $this->view->showLogin();
         }
     }
@@ -66,52 +51,51 @@ class PublicController
     {
         echo "<h2>Sign In Check: WIP - Get Pass Hash</h2>";
         echo "<pre>\n";
-        var_dump($_POST);        
+        var_dump( $_POST );
 
-        $password=$_POST['password'];
+        $password = $_POST['password'];
 
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $hash = password_hash( $password, PASSWORD_DEFAULT );
         echo "hash = $hash\n";
-        echo "</pre>\n";       
-        
+        echo "</pre>\n";
+
     }
 
     public function signInCheck()
     {
-        // TODO: Checkear Usuario y contraseña contra la base de datos
-        $email=$_POST['email'];
-        $password=$_POST['password'];
-       
-        // Chequear que el usuario exista en la base
-        $user = $this->user_model->getUserForEmail($email);
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        if( ! empty($user) ){
+        // Chequear que el usuario exista en la base
+        $user = $this->user_model->getUserForEmail( $email );
+
+        if ( !empty( $user ) ) {
             // Existe el usuario
-            if ( password_verify($password, $user->password)){
+            if ( password_verify( $password, $user->password ) ) {
 
                 session_start();
-                $_SESSION["IS_LOGGED"] = True;
+                $_SESSION["IS_LOGGED"] = true;
                 //$_SESSION["IS_ADMIN"] = $user->is_admin // Futura columna
                 $_SESSION["USER_ID"] = $user->id;
                 $_SESSION["EMAIL"] = $user->email;
                 //$_SESSION['LAST_ACTIVITY'] = time();
 
-                // TODO: Redirigir según admin/ común, chequear ruteo de "home" vs ""
-                header("Location: ".BASE_URL);
-            }else{
-                $this->view->showLogin("Invalid password");
+                // TODO: Redirigir según admin/ común
+                header( "Location: " . BASE_URL );
+            } else {
+                $this->view->showLogin( "Invalid password" );
             }
-        }else{
-            $this->view->ShowLogin("User doesn't exist");
+        } else {
+            $this->view->ShowLogin( "User doesn't exist" );
         }
     }
 
+    //Se sacaria este metodo
     public function subjects()
     {
         $subjects = $this->subject_model->getSubjects();
         $this->view->showSubjects( $subjects );
     }
-
 
     public function courses()
     {
@@ -135,7 +119,6 @@ class PublicController
         $this->view->showCoursesBySubject( $grouped_courses );
 
     }
-    
 
     public function courseDetail( $params = null )
     {
@@ -144,7 +127,8 @@ class PublicController
         $this->view->showCourseDetail( $course );
     }
 
-    public function notFound(){
+    public function notFound()
+    {
         $this->view->show404NotFound();
     }
 
