@@ -1,6 +1,7 @@
 <?php
 require_once 'Controller/PublicController.php';
 require_once 'Controller/AdminController.php';
+require_once 'Controller/UserController.php';
 require_once 'RouterClass.php';
 
 // CONSTANTES PARA RUTEO
@@ -35,6 +36,11 @@ $r->addRoute( "logout", "GET", "PublicController", "logout" );
 // Comentar ésta y descomentar la siguiente para generar hash manualmente
 $r->addRoute( "sign-in-check", "POST", "PublicController", "signInCheck" );
 // $r->addRoute( "sign-in-check", "POST", "PublicController", "getPassHash" );
+
+// TODO Usar para 404
+$r->setDefaultRoute( "PublicController", "notFound" );
+
+//Admin
 
 // learnit.com/admin
 // http://localhost/web-2/TPE-WEB-2-%20Repo/admin
@@ -79,8 +85,11 @@ $r->addRoute( "admin/subjects/edit/:ID", "POST", "AdminController", "updateSubje
 // learnit.com/admin/subjects/delete-error
 $r->addRoute( "admin/subjects/delete-error", "GET", "AdminController", "deleteError" );
 
-// TODO Usar para 404
-$r->setDefaultRoute( "PublicController", "notFound" );
+//User
+
+// learnit.com/user
+// http://localhost/web-2/TPE-WEB-2-%20Repo/user
+$r->addRoute( "user", "GET", "UserController", "user" );
 
 // Debug a mano de ruteo
 //echo "<pre>r->route( \"" . $_GET['action'] . "\", \"" .
