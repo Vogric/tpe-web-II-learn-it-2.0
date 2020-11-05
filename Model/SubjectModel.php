@@ -1,12 +1,12 @@
 <?php
-
-class SubjectModel
+require_once 'Model/BaseModel.php';
+class SubjectModel extends BaseModel
 {
     private $db;
 
     public function __construct()
     {
-        $this->db = new PDO( 'mysql:host=localhost;' . 'dbname=db_courses;charset=utf8', 'root', '' );
+        $this->db = $this->createConection();
     }
 
     public function getSubjects()

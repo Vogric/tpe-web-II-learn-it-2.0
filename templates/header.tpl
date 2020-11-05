@@ -38,7 +38,7 @@
         </ul>
         <div class="form-inline my-2 my-lg-0"">
             {if $logged}
-                                                  <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
+              <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
             <a class="btn btn-outline-green ml-4 mt-1 font-weight-bold">Current User: {$email_s}</a>
             <a class="btn btn-outline-red ml-4 mt-1" href="logout">Sign out</a>
           {else}
