@@ -10,6 +10,10 @@ define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER
         '/' :
         dirname( $_SERVER["PHP_SELF"] ) . '/' )
 );
+echo "<pre>\n";
+var_dump($_SERVER);
+echo "</pre>\n";
+
 // Control en dirname para evitar doble "/" en BASE_URL.
 // ie: "misitio.com//"
 
