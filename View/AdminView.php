@@ -1,28 +1,9 @@
 <?php
-
+require_once "./View/BaseView.php";
 require_once "./libs/smarty/Smarty.class.php";
 
-class AdminView
+class AdminView extends BaseView
 {
-
-    private $smarty;
-
-    public function __construct()
-    {
-        $this->smarty = new Smarty();
-        $this->smarty->assign( 'base_url', BASE_URL );
-
-        if ( session_status() != PHP_SESSION_ACTIVE ) {
-            session_start();
-        }
-
-        if ( isset( $_SESSION['IS_LOGGED'] ) ) {
-            $this->smarty->assign( 'logged', true );
-            $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
-        } else {
-            $this->smarty->assign( 'logged', false );
-        }
-    }
 
     public function showAdmin()
     {
