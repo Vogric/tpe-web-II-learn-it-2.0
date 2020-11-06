@@ -3,12 +3,6 @@ require_once 'Model/BaseModel.php';
 
 class UserModel extends BaseModel
 {
-    private $db;
-    public function __construct()
-    {
-        $this->db = $this->createConection();
-    }
-
     public function getUserForEmail( $email )
     {
         $sentence = $this->db->prepare(

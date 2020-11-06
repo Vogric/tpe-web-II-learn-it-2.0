@@ -2,12 +2,6 @@
 require_once 'Model/BaseModel.php';
 class CourseModel extends BaseModel
 {
-    private $db;
-    public function __construct()
-    {
-        $this->db = $this->createConection();
-    }
-
     public function getCourses()
     {
         $sentence = $this->db->prepare(

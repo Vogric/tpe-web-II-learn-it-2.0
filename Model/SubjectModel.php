@@ -2,13 +2,6 @@
 require_once 'Model/BaseModel.php';
 class SubjectModel extends BaseModel
 {
-    private $db;
-
-    public function __construct()
-    {
-        $this->db = $this->createConection();
-    }
-
     public function getSubjects()
     {
         $sentence = $this->db->prepare(

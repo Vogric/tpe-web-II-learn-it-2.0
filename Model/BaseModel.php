@@ -1,18 +1,23 @@
 <?php
 class BaseModel{
-    public function createConection()
-    {
+    protected $db;
+
+    public function __construct()
+    {    
+        /* host y db se ajustarán según estemos en SourceForge o en local */
         $host = 'localhost';
-        $userName = 'root';
-        $password = '';
         $database = 'db_courses';
+        $userName = 'root';
+        $password = '';        
 
         try {
-            $pdo = new PDO( "mysql:host=$host;dbname=$database;charset=utf8", $userName, $password );
-            $pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+            $this->db = new PDO( "mysql:host=$host;dbname=$database;charset=utf8", $userName, $password );
+            // Investigaremos estos atributos antes de activarlos
+            //$this->$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
         } catch ( Exception $e ) {
+            // Si tenemos error en SourceForge, esto servirá
             var_dump( $e );
-        }
-        return $pdo;
+            die();
+        }        
     }
 }
