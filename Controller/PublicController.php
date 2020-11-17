@@ -75,7 +75,7 @@ class PublicController
 
                 session_start();
                 $_SESSION["IS_LOGGED"] = true;
-                //$_SESSION["IS_ADMIN"] = $user->is_admin // Futura columna
+                $_SESSION["IS_ADMIN"] = $user->is_admin;
                 $_SESSION["USER_ID"] = $user->id;
                 $_SESSION["EMAIL"] = $user->email;
                 //$_SESSION['LAST_ACTIVITY'] = time();

@@ -30,6 +30,7 @@ $r->addRoute( "courses/:ID", "GET", "PublicController", "courseDetail" );
 // http://localhost/web-2/TPE-WEB-2-%20Repo/subjects/
 $r->addRoute( "subjects", "GET", "PublicController", "coursesBySubject" );
 
+//Login / Logout
 $r->addRoute( "login", "GET", "PublicController", "login" );
 $r->addRoute( "logout", "GET", "PublicController", "logout" );
 
@@ -91,7 +92,12 @@ $r->addRoute( "admin/subjects/delete-error", "GET", "AdminController", "deleteEr
 // http://localhost/web-2/TPE-WEB-2-%20Repo/user
 $r->addRoute( "user", "GET", "UserController", "user" );
 
-// Debug a mano de ruteo
+// learnit.com/admin/user/add
+// http://localhost/web-2/TPE-WEB-2-%20Repo/admin/user/add
+$r->addRoute( "admin/user/add", "GET", "UserController", "prepareAddUser" );
+//$r->addRoute( "admin/user/add", "POST", "UserController", "addUser" );
+
+// Debug a mano de ruteoq
 //echo "<pre>r->route( \"" . $_GET['action'] . "\", \"" .
 //     $_SERVER['REQUEST_METHOD'] . "\" )</pre>";
 //run

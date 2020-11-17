@@ -26,4 +26,10 @@ class UserController
     {
         $this->view->showUser();
     }
+
+    public function prepareAddUser()
+    {
+        $users = $this->user_model->getUsers();
+        $this->view->showPrepareAddUser( $users );
+    }
 }
