@@ -26,7 +26,10 @@ class AdminController
             header( "location: " . BASE_URL . 'login' );
             die();
         }
-        // TODO: Verificar si es admin quien esta loggueado
+        elseif ( isset( $_SESSION['IS_ADMIN'] ) && !( $_SESSION['IS_ADMIN'] ) ) {
+            header( "location: " . BASE_URL );
+            die();
+        }
     }
 
     public function admin()
