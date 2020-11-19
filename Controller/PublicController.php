@@ -47,6 +47,38 @@ class PublicController
         }
     }
 
+    public function signUp()
+    {
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $repeatPassword = $_POST['repeatPassword'];
+        $user = $this->user_model->getUserForEmail( $email );
+
+        if ( !empty( $email ) && !empty( $username ) && $password == $repeatPassword && empty( $user ) ) {
+
+            $hash = password_hash( $password, PASSWORD_DEFAULT );
+            $this->model->insert( $email, $username, $hash );
+            $this->verify( $username, $password );
+
+        } else if ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $repeatPassword ) ) {
+
+            $this->view->register( "You must fill in all of the fields" );
+
+        } else if ( $password != $repeatPassword ) {
+
+            $this->view->register( "Password does not match" );
+
+        } else if ( $user->email == $email ) {
+
+            $this->view->register( "We're sorry, that email is taken" );
+
+        } else if ( $user->usuario == $username ) {
+
+            $this->view->register( "User Name already exists. Please try with another one" );
+        }
+    }
+
     public function getPassHash()
     {
         echo "<h2>Sign In Check: WIP - Get Pass Hash</h2>";
