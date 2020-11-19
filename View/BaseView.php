@@ -20,6 +20,11 @@ class BaseView
         } else {
             $this->smarty->assign( 'logged_s', false );
         }
+    }
 
+    public function showError( $message )
+    {
+        // TODO
+        echo '<br>TODO Showing Error<br>';
     }
 }

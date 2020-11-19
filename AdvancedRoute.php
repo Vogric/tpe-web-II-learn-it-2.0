@@ -35,7 +35,8 @@ $r->addRoute( "login", "GET", "PublicController", "login" );
 $r->addRoute( "logout", "GET", "PublicController", "logout" );
 
 // Sign-up
-$r->addRoute( "sign-up", "GET", "PublicController", "signUp" );
+$r->addRoute( "sign-up", "GET", "PublicController", "prepareSignUp" );
+$r->addRoute( "sign-up", "POST", "PublicController", "signUp" );
 
 // Comentar ésta y descomentar la siguiente para generar hash manualmente
 $r->addRoute( "sign-in-check", "POST", "PublicController", "signInCheck" );

@@ -47,6 +47,11 @@ class PublicController
         }
     }
 
+    public function prepareSignUp()
+    {
+        $this->view->showPrepareSignUp();
+    }
+
     public function signUp()
     {
         $email = $_POST['email'];
@@ -58,24 +63,24 @@ class PublicController
         if ( !empty( $email ) && !empty( $username ) && $password == $repeatPassword && empty( $user ) ) {
 
             $hash = password_hash( $password, PASSWORD_DEFAULT );
-            $this->model->insert( $email, $username, $hash );
+            $this->user_model->addUser( $email, $username, $hash );
             $this->verify( $username, $password );
 
-        } else if ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $repeatPassword ) ) {
+        } elseif ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $repeatPassword ) ) {
 
-            $this->view->register( "You must fill in all of the fields" );
+            $this->view->showPrepareSignUp("You must fill in all of the fields" );
 
-        } else if ( $password != $repeatPassword ) {
+        } elseif ( $password != $repeatPassword ) {
 
-            $this->view->register( "Password does not match" );
+            $this->view->showPrepareSignUp( "Password does not match" );
 
-        } else if ( $user->email == $email ) {
+        } elseif ( $user->email == $email ) {
 
-            $this->view->register( "We're sorry, that email is taken" );
+            $this->view->showPrepareSignUp( "We're sorry, that email is taken" );
 
-        } else if ( $user->usuario == $username ) {
+        } elseif ( $user->usuario == $username ) {
 
-            $this->view->register( "User Name already exists. Please try with another one" );
+            $this->view->showPrepareSignUp( "User Name already exists. Please try with another one" );
         }
     }
 

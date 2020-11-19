@@ -39,6 +39,13 @@ class PublicView extends BaseView
         $this->smarty->display( 'templates/courses_by_subject.tpl' );
     }
 
+    public function showPrepareSignUp( $error_message = null)
+    {
+        $this->smarty->assign( 'title_s', 'LearnIT - Sign Up' );
+        $this->smarty->assign( 'error_s', $error_message );
+        $this->smarty->display( 'templates/register.tpl' );
+    }
+
     public function show404NotFound()
     {
         $this->smarty->assign( 'title_s', 'Learnit - Not found' );

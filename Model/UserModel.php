@@ -11,4 +11,10 @@ class UserModel extends BaseModel
         $sentence->execute( array( $email ) );
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
+
+    public function addUser()
+    {
+         // TODO
+         echo '<br>TODO Adding User<br>';
+    }
 }

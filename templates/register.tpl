@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<form method="POST" action="signUp" class="col-md-4 offset-md-4 mt-4" class="form-group">
+<form method="POST" action="sign-up" class="col-md-4 offset-md-4 mt-4" class="form-group">
 
   <div class="form-control">
     <input type="text" name="username" class="form-control" placeholder="User">
@@ -15,9 +15,9 @@
       <input type="password" name="repeat-password" class="form-control" placeholder="Repeat the Password">
   </div>
 
-  {if $error}
+  {if $error_s}
     <div class="alert alert-danger">
-      Error: {$error}
+      Error: {$error_s}
     </div>
   {/if}
 

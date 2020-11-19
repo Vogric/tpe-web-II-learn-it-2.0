@@ -48,6 +48,9 @@
               <a class="btn btn-outline-light ml-4 mt-1" href="login">
                 Sign In
               </a>
+              <a class="btn btn-outline-light ml-4 mt-1" href="sign-up">
+                Sign Up
+              </a>
             {/if}
             {* ------------------------------ *}
         </div>
