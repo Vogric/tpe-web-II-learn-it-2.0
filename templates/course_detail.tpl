@@ -12,9 +12,9 @@
       </ul>
       <a class="btn blue-gradient" href="#">Courses list</a>
     </div>
-      <div class="md-form amber-textarea active-amber-textarea">
+      <div class="md-form">
         <i class="fas fa-pencil-alt prefix"></i>
-        <textarea id="form22" class="md-textarea form-control" rows="3"></textarea>
+        <textarea id="form22" class="md-textarea text-white form-control" rows="2"></textarea>
         <label class="text-warning" for="form22">Leave a comment about this course</label>
       </div>
       <div class="card-deck">
