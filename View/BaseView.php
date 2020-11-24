@@ -16,6 +16,7 @@ class BaseView
         if ( isset( $_SESSION['IS_LOGGED'] ) ) {
             $this->smarty->assign( 'logged_s', true );
             $this->smarty->assign( 'email_s', $_SESSION['EMAIL'] );
+            $this->smarty->assign( 'username_s', $_SESSION['USERNAME'] );
             $this->smarty->assign( 'is_admin_s', $_SESSION['IS_ADMIN'] );
         } else {
             $this->smarty->assign( 'logged_s', false );

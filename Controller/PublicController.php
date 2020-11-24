@@ -47,6 +47,39 @@ class PublicController
         }
     }
 
+    public function signInCheck()
+    {
+        if ( session_status() != PHP_SESSION_ACTIVE ) {
+            session_start();
+        }
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Chequear que el usuario exista en la base
+        $user = $this->user_model->getUserForEmail( $email );
+
+        if ( !empty( $user ) ) {
+            // Existe el usuario
+            if ( password_verify( $password, $user->password ) ) {
+
+                $_SESSION["IS_LOGGED"] = true;
+                $_SESSION["IS_ADMIN"] = $user->is_admin;
+                $_SESSION["USER_ID"] = $user->id;
+                $_SESSION["USERNAME"] = $user->username;
+                $_SESSION["EMAIL"] = $user->email;
+                //$_SESSION['LAST_ACTIVITY'] = time();
+
+                header( "Location: " . BASE_URL );
+            } else {
+                $this->view->showLogin( "Invalid password" );
+            }
+        } else {
+            $this->view->ShowLogin( "User doesn't exist" );
+        }
+    }
+
+
+
     public function prepareSignUp()
     {
         $this->view->showPrepareSignUp();
@@ -65,8 +98,16 @@ class PublicController
             $hash = password_hash( $password, PASSWORD_DEFAULT );
             $this->user_model->addUser( $email, $username, $hash );
             
-            echo "<br>TODO: Do Login for just created user<br>";
-            //$this->verify( $username, $password );
+            // Login del user creado
+            // TODO: Factorizar
+            $_SESSION["IS_LOGGED"] = true;
+            $_SESSION["IS_ADMIN"] = false;
+            $_SESSION["USER_ID"] = 0 ; //TODO No lo tenemos!
+            $_SESSION["USERNAME"] = $username;
+            $_SESSION["EMAIL"] = $email;
+            
+            header( "Location: " . BASE_URL );
+            
 
         } elseif ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $password_repeat ) ) {
             // Verificamos los campos requeridos por HTML5
@@ -105,34 +146,6 @@ class PublicController
 
     }
 
-    public function signInCheck()
-    {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Chequear que el usuario exista en la base
-        $user = $this->user_model->getUserForEmail( $email );
-
-        if ( !empty( $user ) ) {
-            // Existe el usuario
-            if ( password_verify( $password, $user->password ) ) {
-
-                session_start();
-                $_SESSION["IS_LOGGED"] = true;
-                $_SESSION["IS_ADMIN"] = $user->is_admin;
-                $_SESSION["USER_ID"] = $user->id;
-                $_SESSION["EMAIL"] = $user->email;
-                //$_SESSION['LAST_ACTIVITY'] = time();
-
-                // TODO: Redirigir según admin/ común
-                header( "Location: " . BASE_URL );
-            } else {
-                $this->view->showLogin( "Invalid password" );
-            }
-        } else {
-            $this->view->ShowLogin( "User doesn't exist" );
-        }
-    }
 
     //Se sacaria este metodo
     public function subjects()

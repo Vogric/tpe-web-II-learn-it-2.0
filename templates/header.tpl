@@ -47,7 +47,7 @@
                   {if $is_admin_s}
                         <a class=" btn btn-outline-light ml-4 mt-1" href="admin">Admin</a>
                   {/if}
-              <a class="btn btn-outline-green ml-4 mt-1 font-weight-bold">{$email_s}</a>
+              <a class="btn btn-outline-green ml-4 mt-1 font-weight-bold">{$username_s}</a>
               <a class="btn btn-outline-red ml-4 mt-1" href="logout">Sign out</a>
               {* ------------------------------ *}
             {else}
