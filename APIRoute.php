@@ -8,8 +8,12 @@ $router = new Router();
 // armo la tabla de ruteo de la API REST
 
 // learnit.local/api/comments
-// http://localhost/web-2/TPE-WEB-2-%20Repo/api/comments
+// http://localhost/web-2/TPE-WEB-2-%20Repo/api/course/1/comments
+$router->addRoute('course/:COURSE_ID/comments', 'GET', 'APICommentsController', 'getCommentsForCourse');
+
+// La dejamos para inspección general de todos los comentarios del sitio
 $router->addRoute('comments', 'GET', 'APICommentsController', 'getComments');
+
 /*
 $router->addRoute('tareas', 'GET', 'ApiTasksController', 'GetTasks');
 $router->addRoute('tareas/:ID', 'GET', 'ApiTasksController', 'GetTask');
