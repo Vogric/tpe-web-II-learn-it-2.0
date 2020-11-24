@@ -57,31 +57,38 @@ class PublicController
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $repeatPassword = $_POST['repeatPassword'];
-        $user = $this->user_model->getUserForEmail( $email );
+        $password_repeat = $_POST['password-repeat'];
+        $db_user = $this->user_model->getUserForEmail( $email );
 
-        if ( !empty( $email ) && !empty( $username ) && $password == $repeatPassword && empty( $user ) ) {
+        if ( !empty( $email ) && !empty( $username ) && $password == $password_repeat && empty( $db_user ) ) {
 
             $hash = password_hash( $password, PASSWORD_DEFAULT );
             $this->user_model->addUser( $email, $username, $hash );
-            $this->verify( $username, $password );
+            
+            echo "<br>TODO: Do Login for just created user<br>";
+            //$this->verify( $username, $password );
 
-        } elseif ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $repeatPassword ) ) {
-
+        } elseif ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $password_repeat ) ) {
+            // Verificamos los campos requeridos por HTML5
+            // Sólo llegaría aquí en caso de que alguien crackee el form o PostMan o similar
             $this->view->showPrepareSignUp("You must fill in all of the fields" );
 
-        } elseif ( $password != $repeatPassword ) {
+        } elseif ( $password != $password_repeat ) {
 
             $this->view->showPrepareSignUp( "Password does not match" );
 
-        } elseif ( $user->email == $email ) {
+        } elseif ( $db_user->email == $email ) {
 
             $this->view->showPrepareSignUp( "We're sorry, that email is taken" );
 
-        } elseif ( $user->usuario == $username ) {
+        } /*else {
+            // TODO BONUS Chequeo de nombre de usuario repetido
+            $db_user = $this->user_model->getUserByUsername($username);
+            if ( $db_user->username == $username ) {
 
             $this->view->showPrepareSignUp( "User Name already exists. Please try with another one" );
-        }
+          }
+        }*/
     }
 
     public function getPassHash()

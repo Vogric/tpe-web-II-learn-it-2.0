@@ -12,9 +12,14 @@ class UserModel extends BaseModel
         return $sentence->fetch( PDO::FETCH_OBJ );
     }
 
-    public function addUser()
+    public function addUser( $email, $username, $password )    
     {
-         // TODO
-         echo '<br>TODO Adding User<br>';
+        // is_admin: Los usuarios creados, siempre serán usuarios normales. ie: no admin
+         $sentence = $this->db->prepare(
+            "INSERT INTO `user` (`username`, `email`, `password`) 
+                    VALUES (?,?,?)" );
+
+        $result=$sentence->execute( array( $username, $email, $password ) );
+        return $result;
     }
 }
