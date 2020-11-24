@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 02:29 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Host: localhost
+-- Generation Time: Nov 24, 2020 at 04:43 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,17 +102,20 @@ INSERT INTO `subject` (`id`, `title`) VALUES
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`) VALUES
-(2, 'fre@learnit.com', '$2y$10$WE3ODugSNC14pzcYONZi9eXRa/i9vOn3iheAAvzeNP/enub/V98Iy'),
-(3, 'vog@learnit.com', '$2y$10$WivDmFj.x5TwZWPSZsSO9.yQFlg.PrhVRIy3pCuVTa070PHpnBzt2');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
+(2, 'Fre', 'fre@learnit.com', '$2y$10$WE3ODugSNC14pzcYONZi9eXRa/i9vOn3iheAAvzeNP/enub/V98Iy', 1),
+(3, 'Vog', 'vog@learnit.com', '$2y$10$WivDmFj.x5TwZWPSZsSO9.yQFlg.PrhVRIy3pCuVTa070PHpnBzt2', 1),
+(4, 'Braian', 'braian@learnit.com', '$2y$10$WivDmFj.x5TwZWPSZsSO9.yQFlg.PrhVRIy3pCuVTa070PHpnBzt2', 0);
 
 --
 -- Indexes for dumped tables
@@ -157,7 +160,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
