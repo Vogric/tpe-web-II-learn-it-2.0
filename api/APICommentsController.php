@@ -1,6 +1,8 @@
 <?php
+// require_once './Model/CommentModel.php';
+require_once './api/ApiController.php';
 
-class APICommentsController
+class APICommentsController extends APIController
 {
     public function getComments()
     {
