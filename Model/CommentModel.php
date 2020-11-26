@@ -6,6 +6,7 @@ class CommentModel extends BaseModel
     public function getComments()
     {
         // TODO consulta a la db
+        // listado con todos los comentarios y más info
         return array(
             array( "id" => 1,
               "comment" => "mock 101",
@@ -24,20 +25,13 @@ class CommentModel extends BaseModel
 
     public function getCommentsForCourse($course_id)
     {
-        // TODO consulta a la db
-        return array(
-            array( "id" => 1,
-              "comment" => "mock 101",
-              "username" => "Fre",
-              "score" => 2,
-              "id_course" => $course_id
-        ),
-            array( "id" => 2,
-                "comment" => "mock 202",
-                "username" => "Braian",
-                "score" => 5,
-                 "id_course" => $course_id
-            )            
-        );
+        $sentence = $this->db->prepare(
+            "SELECT comment.*,user.username 
+             FROM comment JOIN user ON comment.id_user = user.id 
+             WHERE comment.id_course = ?" );
+
+        $sentence->execute( array( $course_id ) );
+
+        return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
 }
