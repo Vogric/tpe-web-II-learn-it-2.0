@@ -1,6 +1,9 @@
 {literal}
 <div id="vue-course-comments">
 
+     <p>{{ wip_message }}</p>
+
+     <p>TODO ARRAY: {{ comments }} </p>
       
       <div class="card-deck comment-form-box">
         <form id="course-comment-form" class="card score md-form mb-3" action="#" method="POST">

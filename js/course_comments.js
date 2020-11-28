@@ -1,8 +1,16 @@
-let new_node=document.createElement("p");
+"use strict"
 
-new_node.innerHTML="CSR WIP - INSERTED FROM JS";
+let app = new Vue({
+    el: '#vue-course-comments',
+    data: {
+        comments: [],
+        wip_message: null
+    }
+});
 
-let div_course_comments = document.querySelector("#vue-course-comments");
-let first_child = div_course_comments.firstChild;
+document.addEventListener('DOMContentLoaded', () => {
 
-div_course_comments.insertBefore(new_node, first_child);
+    app.comments = ["mock vue 1","mock vue 2"];
+    app.wip_message="CSR WIP - INSERTED FROM VUE";
+
+});
