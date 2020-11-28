@@ -22,6 +22,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
   <link rel="icon" type="image/png" href="./images/logo-learnit.png" />
+  <link rel="stylesheet" href="css/style.css">
   <title>{$title_s}</title>
 </head>
 

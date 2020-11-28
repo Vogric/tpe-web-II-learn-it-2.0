@@ -1,0 +1,12 @@
+.average-score {
+    color: darkmagenta;
+}
+
+.average-box, .comment-form-box {
+    display: flex;
+    justify-content: center;
+}
+
+.card.score {
+    max-width: 20rem;
+}
