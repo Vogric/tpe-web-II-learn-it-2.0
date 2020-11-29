@@ -2,8 +2,6 @@
 <div id="vue-course-comments">
 
      <p>{{ wip_message }}</p>
-
-     <p>TODO ARRAY: {{ comments }} </p>
       
       <div class="card-deck comment-form-box">
         <form id="course-comment-form" class="card score md-form mb-3" action="#" method="POST">
@@ -30,29 +28,16 @@
       <!-- Un card deck contiene todos los comentarios -->
       <div class="card-deck">
         <!-- Un card para cada comentario -->
-        <div class="card score border-success mb-3" >
-          <div class="card-header">⭐⭐⭐⭐⭐</div>
+
+        <div  v-for="comment in comments"
+              class="card score mb-3" >
+          <div class="card-header">{{ comment.stars }}</div>
           <div class="card-body text-success">
-              <h5 class="card-title">Good</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur inim veniam, quis nostrud exercitation.</p>
+              <h5 class="card-title">{{ comment.username }}</h5>
+              <p class="card-text">{{ comment.text }}</p>
           </div>
         </div>
 
-        <div class="card score border-warning mb-3" >
-              <div class="card-header">⭐⭐⭐</div>
-              <div class="card-body text-warning">
-                <h5 class="card-title">Not bad</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,liqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-              </div>
-        </div>  
-
-        <div class="card score border-danger mb-3" >
-          <div class="card-header">⭐</div>
-          <div class="card-body text-danger">
-            <h5 class="card-title">Bad course</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit,liqua. Ut enim ad minim veniam, quis nostrud exercitatio.</p>
-          </div>
-        </div>
 
       </div> <!-- cierra card-deck de comentarios -->
 
