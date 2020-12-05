@@ -34,4 +34,19 @@ class CommentModel extends BaseModel
 
         return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
+
+    public function addComment($text,$score,$id_course,$id_user)
+    {
+        $sentence = $this->db->prepare(
+            "INSERT INTO comment (text,score,id_course,id_user) 
+             VALUES (?,?,?,?)" );
+
+        $sentence->execute( array($text,$score,$id_course,$id_user) );
+        // TODO: chequear que el execute no diera error
+
+        return $this->db->lastInsertId();
+    }
+
+
+    
 }

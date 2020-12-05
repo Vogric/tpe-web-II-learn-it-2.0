@@ -14,6 +14,8 @@ $router->addRoute('course/:COURSE_ID/comments', 'GET', 'APICommentsController', 
 // La dejamos para inspección general de todos los comentarios del sitio
 $router->addRoute('comments', 'GET', 'APICommentsController', 'getComments');
 
+$router->addRoute('comments', 'POST', 'APICommentsController', 'addComment');
+
 /*
 $router->addRoute('tareas', 'GET', 'ApiTasksController', 'GetTasks');
 $router->addRoute('tareas/:ID', 'GET', 'ApiTasksController', 'GetTask');
