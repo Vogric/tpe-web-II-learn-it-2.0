@@ -29,18 +29,17 @@ class APICommentsController extends APIController
     {
         $body = $this->getData();
         
-        echo '<pre>$body =' . "\n";
-        var_dump($body);
-        echo '</pre>';
+        // TODO: Validar. Espero en $body:
+        //     text
+        //     score
+        //     id_course
+        //     id_user                
 
         $last_insert_id = $this->model->addComment(
-            "mock comment " . date(DATE_RFC2822) . " (to be deleted)",
-            4, // score,
-            4, // id_course  4 -> "Front-End Frameworks"
-            2  // id_user  2-> Fre
-        );
+            $body->text,$body->score,$body->id_course,$body->id_user);
+        
+        // TODO: Dar error si hubo error
         $this->view->response([ "last_insert_id" => $last_insert_id ],200);
-
     }
 
 }
