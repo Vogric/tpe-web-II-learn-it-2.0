@@ -17,9 +17,9 @@
       <div class="card-header average-score">Average</div>
       <div class="card-body text-success">
         <h5 class="card-title">{{ average }}</h5>
-        <p v-if="comment.length == 1" class="card-text">
+        <p v-if="comments.length == 1" class="card-text">
           Only 1 comment in total.</p>
-        <p v-if="comment.length > 1" class="card-text">
+        <p v-if="comments.length > 1" class="card-text">
           {{ comments.length }} comments in total.</p>
       </div>
     </div>
