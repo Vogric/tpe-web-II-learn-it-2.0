@@ -58,6 +58,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Edit Delete Subjects-->
     <div class="col-md-6 mb-4">
       <div class="card gradient-card">
         <div class="card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
@@ -74,7 +76,26 @@
           </a>
         </div>
       </div>
-    </div>
+    </div><!-- cierra div Edit Delete Subjects-->
+
+    <!-- Manage Users-->
+    <div class="col-md-6 mb-4">
+      <div class="card gradient-card">
+        <div class="card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+          <a href="admin/users">
+            <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+              <div class="first-content align-self-center p-3">
+                <h3 class="card-title">Manage Users</h3>
+                <p class="lead mb-0">Change roles or delete users</p>
+              </div>
+              <div class="second-content  align-self-center mx-auto text-center">
+                <i class="fas fa-edit fa-3x"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div><!-- cierra div Edit Delete Subjects-->
   </div>
 </div>
 {include file="footer.tpl"}

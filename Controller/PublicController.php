@@ -10,13 +10,14 @@ require_once "./Model/SubjectModel.php";
 class PublicController
 {
     private $view;
-    private $model;
+    private $course_model;
+    private $subject_model;
     private $user_model;
 
     public function __construct()
     {
         $this->view = new PublicView();
-        $this->model = new CourseModel();
+        $this->course_model = new CourseModel();
         $this->subject_model = new SubjectModel();
         $this->user_model = new USerModel();
     }
@@ -57,7 +58,7 @@ class PublicController
                 $this->view->showLogin( "Invalid password" );
             }
         } else {
-            $this->view->ShowLogin( "User doesn't exist" );
+            $this->view->showLogin( "User doesn't exist" );
         }
     }
 
@@ -132,7 +133,7 @@ class PublicController
 
     public function courses()
     {
-        $courses = $this->model->getCourses();
+        $courses = $this->course_model->getCourses();
         $this->view->showCourses( $courses );
     }
 
@@ -156,7 +157,7 @@ class PublicController
     public function courseDetail( $params = null )
     {
         $course_id = $params[':ID'];
-        $course = $this->model->getCourseDetail( $course_id );
+        $course = $this->course_model->getCourseDetail( $course_id );
         $this->view->showCourseDetail( $course );
     }
 

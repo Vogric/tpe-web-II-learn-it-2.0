@@ -24,4 +24,13 @@ class UserModel extends BaseModel
         
         return $db->lastInsertId(); 
     }
+
+    public function getUsers()
+    {
+        $sentence = $this->db->prepare(
+            "SELECT * FROM user" );
+
+        $sentence->execute( array( ) );
+        return $sentence->fetchAll( PDO::FETCH_OBJ );
+    }
 }

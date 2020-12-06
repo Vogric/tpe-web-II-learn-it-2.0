@@ -3,12 +3,14 @@ require_once './helper/SessionHelper.php';
 require_once './View/AdminView.php';
 require_once './Model/CourseModel.php';
 require_once './Model/SubjectModel.php';
+require_once "./Model/UserModel.php";
 
 class AdminController
 {
     private $view;
     private $course_model;
     private $subject_model;
+    private $user_model;
 
     public function __construct()
     {
@@ -16,6 +18,7 @@ class AdminController
         $this->view = new AdminView();
         $this->course_model = new CourseModel();
         $this->subject_model = new SubjectModel();
+        $this->user_model = new USerModel();
     }
 
     public function redirectNotAdmins()
@@ -35,6 +38,9 @@ class AdminController
     {
         $this->view->showAdmin();
     }
+
+
+    /*  Administración de Cursos  */
 
     public function prepareAddCourse()
     {
@@ -100,6 +106,9 @@ class AdminController
         header( "Location: " . BASE_URL . "admin/courses/edit-delete" );
     }
 
+
+    /*  Administración de Subjects  */
+
     public function prepareAddSubject()
     {
         $subjects = $this->subject_model->getSubjects();
@@ -155,5 +164,31 @@ class AdminController
         );
         $this->subject_model->updateSubject( $subject_id, $subject_data );
         header( "Location: " . BASE_URL . "admin/subjects/edit-delete" );
+        die();
     }
+
+
+    public function manageUsers()
+    {
+        $users = $this->user_model->getUsers();
+        $this->view->showManageUsers( $users );        
+    }
+
+
+    public function userBecomeCommon ( $params ) 
+    { 
+        echo "<h1>WIP userBecomeCommon</h1>";
+    }
+
+    public function userBecomeAdmin ( $params ) 
+    { 
+        echo "<h1>WIP userBecomeAdmin</h1>";
+    }
+
+    public function deleteUser ( $params ) 
+    { 
+        echo "<h1>WIP deleteUser</h1>";
+    }
+
+    
 }

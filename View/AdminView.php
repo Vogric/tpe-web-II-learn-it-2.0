@@ -64,4 +64,11 @@ class AdminView extends BaseView
         $this->smarty->assign( 'back_s', "admin/subjects/edit-delete" );
         $this->smarty->display( 'templates/error.tpl' );
     }
+
+    public function showManageUsers( $users )
+    {
+        $this->smarty->assign( 'title_s', 'Admin: Manage Users' );
+        $this->smarty->assign( 'users_s', $users );
+        $this->smarty->display( 'templates/manage_users.tpl' );
+    }
 }

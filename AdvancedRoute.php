@@ -2,7 +2,6 @@
 require_once 'helper/SessionHelper.php';
 require_once 'Controller/PublicController.php';
 require_once 'Controller/AdminController.php';
-require_once 'Controller/UserController.php';
 require_once 'RouterClass.php';
 
 // CONSTANTES PARA RUTEO
@@ -46,8 +45,9 @@ $r->addRoute( "sign-up", "POST", "PublicController", "signUp" );
 $r->addRoute( "sign-in-check", "POST", "PublicController", "signInCheck" );
 // $r->addRoute( "sign-in-check", "POST", "PublicController", "getPassHash" );
 
-// TODO Usar para 404
+// Usado para 404
 $r->setDefaultRoute( "PublicController", "notFound" );
+
 
 //Admin
 
@@ -96,14 +96,14 @@ $r->addRoute( "admin/subjects/delete-error", "GET", "AdminController", "deleteEr
 
 //User
 
-// learnit.com/user
-// http://localhost/web-2/TPE-WEB-2-%20Repo/user
-$r->addRoute( "user", "GET", "UserController", "user" );
+// learnit.com/admin/users
+// http://localhost/web-2/TPE-WEB-2-%20Repo/admin/users
+$r->addRoute( "admin/users", "GET", "AdminController", "manageUsers" );
+$r->addRoute( "", "GET", "AdminController", "" );
 
-// learnit.com/admin/user/add
-// http://localhost/web-2/TPE-WEB-2-%20Repo/admin/user/add
-$r->addRoute( "admin/user/add", "GET", "UserController", "prepareAddUser" );
-//$r->addRoute( "admin/user/add", "POST", "UserController", "addUser" );
+$r->addRoute( "admin/users/:ID/become-common", "GET", "AdminController", "userBecomeCommon" );
+$r->addRoute( "admin/users/:ID/become-admin", "GET", "AdminController", "userBecomeAdmin" );
+$r->addRoute( "admin/users/delete/:ID", "GET", "AdminController", "deleteUser" );
 
 // Debug a mano de ruteoq
 //echo "<pre>r->route( \"" . $_GET['action'] . "\", \"" .
