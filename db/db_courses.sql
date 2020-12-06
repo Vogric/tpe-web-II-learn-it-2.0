@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 26, 2020 at 03:16 PM
+-- Generation Time: Dec 06, 2020 at 11:41 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -43,9 +43,18 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `text`, `score`, `id_course`, `id_user`) VALUES
-(1, 'console 101', 2, 2, 2),
-(2, 'console 102', 5, 2, 3),
-(3, 'console 103', 5, 2, 4);
+(5, 'mock comment Sat, 05 Dec 2020 15:51:31 +0100 (to be deleted)', 4, 4, 2),
+(9, 'posted comment via RESTClient Addon', 5, 4, 4),
+(10, 'try 1 CSR', 3, 4, 2),
+(11, 'try 2 CSR', 1, 4, 2),
+(12, 'More comments from CSR', 1, 2, 2),
+(13, 'tryout 2 CSR', 2, 4, 3),
+(14, 'Works?', 5, 4, 3),
+(15, 'Resets?', 2, 4, 3),
+(16, 'It works! It works!', 4, 2, 2),
+(19, 'ooooooooooooo', 1, 2, 12),
+(27, 'other dup chk', 1, 2, 3),
+(28, 'yes!', 5, 2, 12);
 
 -- --------------------------------------------------------
 
@@ -139,7 +148,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `is_admin`) VALUES
 (2, 'Fre', 'fre@learnit.com', '$2y$10$WE3ODugSNC14pzcYONZi9eXRa/i9vOn3iheAAvzeNP/enub/V98Iy', 1),
 (3, 'Vog', 'vog@learnit.com', '$2y$10$WivDmFj.x5TwZWPSZsSO9.yQFlg.PrhVRIy3pCuVTa070PHpnBzt2', 1),
-(4, 'Braian', 'braian@learnit.com', '$2y$10$WivDmFj.x5TwZWPSZsSO9.yQFlg.PrhVRIy3pCuVTa070PHpnBzt2', 0);
+(4, 'Braian', 'braian@learnit.com', '$2y$10$WivDmFj.x5TwZWPSZsSO9.yQFlg.PrhVRIy3pCuVTa070PHpnBzt2', 0),
+(12, 'Otro', 'o@o.o', '$2y$10$wkpGdpIX3BuYxThEG.mwe.318B/QOlJbo.gspxT0diL2bwixdkDu.', 0);
 
 --
 -- Indexes for dumped tables
@@ -180,7 +190,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -198,7 +208,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
