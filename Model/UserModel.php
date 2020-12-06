@@ -20,6 +20,8 @@ class UserModel extends BaseModel
                     VALUES (?,?,?)" );
 
         $result=$sentence->execute( array( $username, $email, $password ) );
-        return $result;
+        // TODO Chequear $result;
+        
+        return $db->lastInsertId(); 
     }
 }

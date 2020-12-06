@@ -1,6 +1,8 @@
 <?php
+require_once 'helper/SessionHelper.php';
 require_once 'RouterClass.php';
 require_once 'api/APICommentsController.php';
+require_once 'api/APISessionController.php';
 
 // instacio el router
 $router = new Router();
@@ -15,6 +17,10 @@ $router->addRoute('course/:COURSE_ID/comments', 'GET', 'APICommentsController', 
 $router->addRoute('comments', 'GET', 'APICommentsController', 'getComments');
 
 $router->addRoute('comments', 'POST', 'APICommentsController', 'addComment');
+
+//Info de session via API
+$router->addRoute('session', 'GET', 'APISessionController', 'sessionInfo');
+
 
 /*
 $router->addRoute('tareas', 'GET', 'ApiTasksController', 'GetTasks');

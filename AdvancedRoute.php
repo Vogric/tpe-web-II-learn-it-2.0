@@ -1,4 +1,5 @@
 <?php
+require_once 'helper/SessionHelper.php';
 require_once 'Controller/PublicController.php';
 require_once 'Controller/AdminController.php';
 require_once 'Controller/UserController.php';
@@ -12,6 +13,9 @@ define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER
 );
 // Control en dirname para evitar doble "/" en BASE_URL.
 // ie: "misitio.com//"
+
+
+
 
 $r = new Router();
 

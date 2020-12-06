@@ -1,9 +1,11 @@
 <?php
-
+require_once './helper/SessionHelper.php';
 require_once "./View/PublicView.php";
 require_once "./Model/CourseModel.php";
 require_once "./Model/UserModel.php";
 require_once "./Model/SubjectModel.php";
+
+
 
 class PublicController
 {
@@ -21,26 +23,15 @@ class PublicController
 
     public function logout()
     {
-        if ( session_status() != PHP_SESSION_ACTIVE ) {
-            session_start();
-        }
-        session_destroy();
-        header( "Location: " . BASE_URL );
-        die(); // Recomendado en slide
+        global $SessionHelper;
+        $SessionHelper->logout();
     }
 
     public function login()
     {
-        if ( session_status() != PHP_SESSION_ACTIVE ) {
-            session_start();
-        }
-        if ( isset( $_SESSION['IS_LOGGED'] ) ) {
-
-            // TODO: si es admin ir a admin
-            // $_SESSION['IS_ADMIN']
-            // sino ir a home
-
+        if ( $_SESSION['IS_LOGGED'] ) {
             header( "Location: " . BASE_URL );
+            die();
         } else {
             // si no está logueado
             $this->view->showLogin();
@@ -49,9 +40,6 @@ class PublicController
 
     public function signInCheck()
     {
-        if ( session_status() != PHP_SESSION_ACTIVE ) {
-            session_start();
-        }
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -61,15 +49,10 @@ class PublicController
         if ( !empty( $user ) ) {
             // Existe el usuario
             if ( password_verify( $password, $user->password ) ) {
+                global $SessionHelper;
 
-                $_SESSION["IS_LOGGED"] = true;
-                $_SESSION["IS_ADMIN"] = $user->is_admin;
-                $_SESSION["USER_ID"] = $user->id;
-                $_SESSION["USERNAME"] = $user->username;
-                $_SESSION["EMAIL"] = $user->email;
-                //$_SESSION['LAST_ACTIVITY'] = time();
-
-                header( "Location: " . BASE_URL );
+                $SessionHelper->loginUser($user->id, $user->username, 
+                                          $user->email, $user->is_admin);
             } else {
                 $this->view->showLogin( "Invalid password" );
             }
@@ -96,19 +79,12 @@ class PublicController
         if ( !empty( $email ) && !empty( $username ) && $password == $password_repeat && empty( $db_user ) ) {
 
             $hash = password_hash( $password, PASSWORD_DEFAULT );
-            $this->user_model->addUser( $email, $username, $hash );
+            $new_user_id = $this->user_model->addUser( $email, $username, $hash );
             
             // Login del user creado
-            // TODO: Factorizar
-            $_SESSION["IS_LOGGED"] = true;
-            $_SESSION["IS_ADMIN"] = false;
-            $_SESSION["USER_ID"] = 0 ; //TODO No lo tenemos!
-            $_SESSION["USERNAME"] = $username;
-            $_SESSION["EMAIL"] = $email;
-            
-            header( "Location: " . BASE_URL );
-            
-
+            global $SessionHelper;
+            $SessionHelper->loginUser($new_user_id, $username,$email);
+ 
         } elseif ( empty( $email ) || empty( $username ) || empty( $password ) || empty( $password_repeat ) ) {
             // Verificamos los campos requeridos por HTML5
             // Sólo llegaría aquí en caso de que alguien crackee el form o PostMan o similar

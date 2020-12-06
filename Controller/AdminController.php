@@ -1,7 +1,8 @@
 <?php
-require_once "./View/AdminView.php";
-require_once "./Model/CourseModel.php";
-require_once "./Model/SubjectModel.php";
+require_once './helper/SessionHelper.php';
+require_once './View/AdminView.php';
+require_once './Model/CourseModel.php';
+require_once './Model/SubjectModel.php';
 
 class AdminController
 {
@@ -19,14 +20,12 @@ class AdminController
 
     public function redirectNotAdmins()
     {
-        if ( session_status() != PHP_SESSION_ACTIVE ) {
-            session_start();
-        }
-        if ( !isset( $_SESSION['IS_LOGGED'] ) ) {
+
+        if ( ! $_SESSION['IS_LOGGED'] ) {
             header( "location: " . BASE_URL . 'login' );
             die();
         }
-        elseif ( isset( $_SESSION['IS_ADMIN'] ) && !( $_SESSION['IS_ADMIN'] ) ) {
+        elseif ( ! $_SESSION['IS_ADMIN'] ) {
             header( "location: " . BASE_URL );
             die();
         }
