@@ -25,50 +25,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const COURSE_COMMENTS_ENDPOINT = `api/course/${app.course_id}/comments`;
     const COMMENTS_ENDPOINT = 'api/comments';
 
+    let form_course_comment;
 
     getComments();
 
-    getSessionInfo();
+    getSessionInfo();      
 
-    
-    document.querySelector("#course-comment-form").addEventListener("submit",
-        function (e) {
-            e.preventDefault();
-            const post_comment = {
-                text: document.querySelector("#new-text").value,
-                score: document.querySelector("#new-score").value,
-                id_course: app.course_id,
-                id_user: app.user_id
-            }
+    function submitNewComment(e) {
 
-            console.log("#course-comment-form->submit");
-            console.log("post_comment =", post_comment);
+        e.preventDefault();
+        const post_comment = {
+            text: document.querySelector("#new-text").value,
+            score: document.querySelector("#new-score").value,
+            id_course: app.course_id,
+            id_user: app.user_id
+        };
 
-            fetch(COMMENTS_ENDPOINT, {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(post_comment)
+        console.log("#course-comment-form->submit");
+        console.log("post_comment =", post_comment);
+
+        fetch(COMMENTS_ENDPOINT, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(post_comment)
+        })
+            .then(response => response.json())
+            .then(function (json) {
+                // Agrego lo que posteé al id y el username
+                // para armar un comment como los que se obtienen
+                // de la API
+                let new_comment = {
+                    id: json.last_insert_id,
+                    username: app.username,
+                    ...post_comment                    
+                };
+                // Y recalculo las estrellas
+                addStarsToComment(new_comment);
+
+                app.comments.push(new_comment);
+                app.average =
+                    (app.average * (app.comments.length - 1) + parseInt(new_comment.score)) /
+                    app.comments.length;
+                return null;
             })
-                .then(response => response.json())
-                .then(function (json) {
-                    // Agrego lo que posteé al id y el username
-                    // para armar un comment como los que se obtienen
-                    // de la API
-                    let new_comment = {
-                        id: json.last_insert_id,
-                        username: app.username,
-                        ...post_comment
-                    };
-                    // Y recalculo las estrellas
-                    addStarsToComment(new_comment);
-
-                    app.comments.push(new_comment);
-                    app.average =
-                        (app.average * (app.comments.length - 1) + parseInt(new_comment.score)) /
-                        app.comments.length;
-                })
-                .catch(error => console.log(error));
-        });
+            .then(_not_used => form_course_comment.reset() )                
+            .catch(error => console.log(error));
+        
+    }        
 
 
     function getComments() {
@@ -102,7 +105,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 app.username = info.username;
                 app.is_admin = info.is_admin;
                 app.wip_message+= " " + JSON.stringify(info);
-                        
+                return app.is_logged;
+            })
+            .then(is_logged => {
+                if(is_logged) {
+                    form_course_comment = document.querySelector("#course-comment-form");
+                    form_course_comment.addEventListener("submit",submitNewComment);                    
+                }
+                else {
+                    // Para seguridad
+                    form_course_comment=null;
+                }
             })
             .catch(error => console.log(error))
     }

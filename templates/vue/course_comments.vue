@@ -3,12 +3,14 @@
 
   <p>{{ wip_message }}</p>
 
+  <!-- BUG Conflicto entre Bootstrap, eventListener, classes y Vue
   <div v-bind:class="[
      { 'comment-form-box': is_logged },
      { 'card-deck'       : is_logged },
      { 'text-dark'       : is_logged },
      { 'not-show'        : !is_logged }
-  ]">
+  ]"> -->  
+  <div v-if="is_logged" class="comment-form-box card-deck text-dark" >
     <form id="course-comment-form" class="card comment-form" method="POST">
       <div>
         <label for="new-text">Leave a comment about this course</label>
@@ -20,7 +22,6 @@
           title="Your score for this course" />
       </div>
       <input id="post-new-comment" type="submit" value="Comment">
-
     </form>
   </div>
 
