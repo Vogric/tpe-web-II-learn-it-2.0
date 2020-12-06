@@ -1,15 +1,6 @@
 {literal}
 <div id="vue-course-comments">
-
-  <p>{{ wip_message }}</p>
-
-  <!-- BUG Conflicto entre Bootstrap, eventListener, classes y Vue
-  <div v-bind:class="[
-     { 'comment-form-box': is_logged },
-     { 'card-deck'       : is_logged },
-     { 'text-dark'       : is_logged },
-     { 'not-show'        : !is_logged }
-  ]"> -->  
+  
   <div v-if="is_logged" class="comment-form-box card-deck text-dark" >
     <form id="course-comment-form" class="card comment-form" method="POST">
       <div>
@@ -42,16 +33,20 @@
 
   <!-- Un card deck contiene todos los comentarios -->
   <div class="card-deck">
-    <!-- Un card para cada comentario -->
 
-    <div v-for="comment in comments" class="card score mb-3">
+    <!-- Un card para cada comentario -->
+    <div v-for="(comment, pos) in comments" class="card score mb-3">
+
       <div class="card-header">{{ comment.stars }}</div>
       <div class="card-body text-success">
         <h5 class="card-title">{{ comment.username }}</h5>
         <p class="card-text">{{ comment.text }}</p>
       </div>
-    </div>
+      <div v-if="is_admin" class="card-footer">
+        <input type="button" class="csr-delete-comment" v-bind:data-id="comment.id"  v-bind:data-pos="pos" value="Delete" />
+      </div>
 
+    </div>
 
   </div> <!-- cierra card-deck de comentarios -->
 

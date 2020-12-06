@@ -3,12 +3,12 @@
 let app = new Vue({
     el: '#vue-course-comments',
     data: {
-        wip_message: null,
+        //wip_message: null,
         course_id: 0,
         is_logged: false,
-        user_id: 2, // TODO Consultar via API
-        username: "Fre*", // TODO Consultar via API
-        is_admin: true, // TODO Consultar via API
+        user_id: null,
+        username: null,
+        is_admin: false,
         comments: [],
         average: 0
     }
@@ -30,6 +30,60 @@ document.addEventListener('DOMContentLoaded', () => {
     getComments();
 
     getSessionInfo();      
+
+    
+    function getComments() {
+        fetch(COURSE_COMMENTS_ENDPOINT)
+            .then(response => response.json())
+            .then(function (comments) {
+                // Agrega stars según score a cada comentario 'c'
+                app.comments = comments.map(addStarsToComment);
+
+                let score_sum = 0;
+                for (const c of comments) {
+                    score_sum += parseInt(c.score);
+                }
+                app.average = score_sum / comments.length;
+                return null;
+            })
+            .then(_not_used => {
+                document.querySelectorAll(".csr-delete-comment")
+                    .forEach(button => 
+                        button.addEventListener('click',deleteComment))
+            })
+            .catch(error => console.log("Fetch error:",error))
+    }
+
+
+    function addStarsToComment(c){
+        c.stars = "⭐".repeat(c.score)
+        return c 
+    }
+
+    function getSessionInfo() {
+        fetch('api/session')
+            .then(response => response.json())
+            .then(function (info) {
+                app.is_logged = info.is_logged;
+                app.user_id = info.user_id;
+                app.username = info.username;
+                app.is_admin = parseInt(info.is_admin);
+                // console.log(app);
+                // app.wip_message+= " " + JSON.stringify(app._data);
+                return app.is_logged;
+            })
+            .then(is_logged => {
+                if(is_logged) {
+                    form_course_comment = document.querySelector("#course-comment-form");
+                    form_course_comment.addEventListener("submit",submitNewComment);                    
+                }
+                else {
+                    // Para seguridad
+                    form_course_comment=null;
+                }
+            })
+            .catch(error => console.log("Fetch error:",error))
+    }
 
     function submitNewComment(e) {
 
@@ -66,61 +120,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 app.average =
                     (app.average * (app.comments.length - 1) + parseInt(new_comment.score)) /
                     app.comments.length;
-                return null;
+
+                return new_comment.id;
             })
+            .then( new_comment_id => 
+                document.querySelector(`.csr-delete-comment[data-id="${new_comment_id}"]`)
+                    .addEventListener('click',deleteComment) )
             .then(_not_used => form_course_comment.reset() )                
-            .catch(error => console.log(error));
+            .catch(error => console.log("Fetch error:",error));
         
-    }        
-
-
-    function getComments() {
-        fetch(COURSE_COMMENTS_ENDPOINT)
-            .then(response => response.json())
-            .then(function (comments) {
-                // Agrega stars según score a cada comentario 'c'
-                app.comments = comments.map(addStarsToComment);
-
-                let score_sum = 0;
-                for (const c of comments) {
-                    score_sum += parseInt(c.score);
-                }
-                app.average = score_sum / comments.length;
-            })
-            .catch(error => console.log(error))
     }
 
+    function deleteComment(event)
+    {
+        const id_to_delete=event.target.dataset.id;
+        const pos_to_delete=event.target.dataset.pos;
+        console.log("deleteComment ", id_to_delete);
 
-    function addStarsToComment(c){
-        c.stars = "⭐".repeat(c.score)
-        return c 
-    }
-
-    function getSessionInfo() {
-        fetch('api/session')
-            .then(response => response.json())
-            .then(function (info) {
-                app.is_logged = info.is_logged;                
-                app.user_id = info.user_id;
-                app.username = info.username;
-                app.is_admin = info.is_admin;
-                app.wip_message+= " " + JSON.stringify(info);
-                return app.is_logged;
-            })
-            .then(is_logged => {
-                if(is_logged) {
-                    form_course_comment = document.querySelector("#course-comment-form");
-                    form_course_comment.addEventListener("submit",submitNewComment);                    
+        fetch(COMMENTS_ENDPOINT + `/${id_to_delete}`, { method: 'DELETE' })
+            .then(response => {
+                console.log("DELETE response:", response);
+                if( response.ok ) {                    
+                    app.comments.splice(pos_to_delete, 1);
+                    console.log(`Deleted comment id ${id_to_delete} and from array pos ${pos_to_delete}`);
                 }
                 else {
-                    // Para seguridad
-                    form_course_comment=null;
+                    response.json().then(json => 
+                        console.log(`API Error: ${json}`));
                 }
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log("Fetch error:",error));
+
     }
-
-
 
 
 });
