@@ -177,17 +177,26 @@ class AdminController
 
     public function userBecomeCommon ( $params ) 
     { 
-        echo "<h1>WIP userBecomeCommon</h1>";
+        $user_id = $params[':ID'];
+        $this->user_model->setUserAsAdmin($user_id,false);
+        header( "Location: " . BASE_URL . "admin/users" );        
+        die();
     }
 
     public function userBecomeAdmin ( $params ) 
     { 
-        echo "<h1>WIP userBecomeAdmin</h1>";
+        $user_id = $params[':ID'];
+        $this->user_model->setUserAsAdmin($user_id,true);
+        header( "Location: " . BASE_URL . "admin/users" );        
+        die();
     }
 
     public function deleteUser ( $params ) 
     { 
-        echo "<h1>WIP deleteUser</h1>";
+        $user_id = $params[':ID'];
+        $this->user_model->deleteUser($user_id);
+        header( "Location: " . BASE_URL . "admin/users" );        
+        die();
     }
 
     

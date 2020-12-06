@@ -22,7 +22,7 @@ class UserModel extends BaseModel
         $result=$sentence->execute( array( $username, $email, $password ) );
         // TODO Chequear $result;
         
-        return $db->lastInsertId(); 
+        return $this->db->lastInsertId(); 
     }
 
     public function getUsers()
@@ -33,4 +33,22 @@ class UserModel extends BaseModel
         $sentence->execute( array( ) );
         return $sentence->fetchAll( PDO::FETCH_OBJ );
     }
+
+    public function setUserAsAdmin($user_id,$admin_role)
+    {
+        $sentence = $this->db->prepare(
+            "UPDATE user SET is_admin=? WHERE id=?");
+
+        $result = $sentence->execute( array( ((int) $admin_role),$user_id ) );        
+        return $result;
+    }
+
+    public function deleteUser( $user_id )
+    {
+        $sentence = $this->db->prepare(
+            "DELETE from user WHERE id=?");
+
+        return $sentence->execute( array( $user_id ) ); 
+    }
+  
 }
