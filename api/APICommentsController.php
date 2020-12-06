@@ -42,4 +42,20 @@ class APICommentsController extends APIController
         $this->view->response([ "last_insert_id" => $last_insert_id ],200);
     }
 
+
+    public function deleteComment($params) {
+        if(! $_SESSION['IS_ADMIN']) {
+            $this->view->response("Required admin to be logged", 403);
+        }
+        else {
+            $id_to_delete = $params[':ID'];
+            $result =  $this->model->deleteComment($id_to_delete);
+
+            if($result > 0)
+                $this->view->response("Comment with id=$id_to_delete deleted", 200);
+            else
+                $this->view->response("Comment with id=$id_to_delete not found", 404);
+        }
+    }
+
 }

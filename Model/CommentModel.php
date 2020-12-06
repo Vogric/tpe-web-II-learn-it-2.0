@@ -47,6 +47,15 @@ class CommentModel extends BaseModel
         return $this->db->lastInsertId();
     }
 
+    public function deleteComment( $comment_id )
+    {
+        $sentence = $this->db->prepare(
+            "DELETE from comment WHERE id=?");
+
+        $sentence->execute( array( $comment_id ) );
+        
+        return $sentence->rowCount();
+    }
 
     
 }

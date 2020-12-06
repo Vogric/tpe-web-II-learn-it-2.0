@@ -2,7 +2,7 @@
 require_once 'helper/SessionHelper.php';
 require_once 'Controller/PublicController.php';
 require_once 'Controller/AdminController.php';
-require_once 'RouterClass.php';
+require_once 'libs/RouterClass.php';
 
 // CONSTANTES PARA RUTEO
 define( "BASE_URL", 'http://' . $_SERVER["SERVER_NAME"] . ':' . $_SERVER["SERVER_PORT"] .
