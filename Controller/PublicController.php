@@ -109,6 +109,7 @@ class PublicController
         }*/
     }
 
+    /* TODO BONUS Adaptar para password recovery
     public function getPassHash()
     {
         echo "<h2>Sign In Check: WIP - Get Pass Hash</h2>";
@@ -120,16 +121,8 @@ class PublicController
         $hash = password_hash( $password, PASSWORD_DEFAULT );
         echo "hash = $hash\n";
         echo "</pre>\n";
-
     }
-
-
-    //Se sacaria este metodo
-    public function subjects()
-    {
-        $subjects = $this->subject_model->getSubjects();
-        $this->view->showSubjects( $subjects );
-    }
+     */
 
     public function courses()
     {
