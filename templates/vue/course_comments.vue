@@ -35,7 +35,7 @@
   <div class="card-deck">
 
     <!-- Un card para cada comentario -->
-    <div v-for="(comment, pos) in comments" class="card score mb-3">
+    <div v-for="comment in comments" class="card score mb-3">
 
       <div class="card-header">{{ comment.stars }}</div>
       <div class="card-body text-success">
@@ -43,7 +43,7 @@
         <p class="card-text">{{ comment.text }}</p>
       </div>
       <div v-if="is_admin" class="card-footer">
-        <input type="button" class="csr-delete-comment" v-bind:data-id="comment.id"  v-bind:data-pos="pos" value="Delete" />
+        <input type="button" class="csr-delete-comment" v-bind:data-id="comment.id" value="Delete" v-on:click="deleteComment"/>
       </div>
 
     </div>

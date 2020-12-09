@@ -11,6 +11,9 @@ let app = new Vue({
         is_admin: false,
         comments: [],
         average: 0
+    },
+    methods: {
+        deleteComment: e => null  // para evitar el Warning y asignar después
     }
 });
 
@@ -45,12 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 app.average = score_sum / comments.length;
                 return null;
-            })
-            .then(_not_used => {
-                document.querySelectorAll(".csr-delete-comment")
-                    .forEach(button => 
-                        button.addEventListener('click',deleteComment))
-            })
+            })           
             .catch(error => console.log("Fetch error:",error))
     }
 
@@ -121,27 +119,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     (app.average * (app.comments.length - 1) + parseInt(new_comment.score)) /
                     app.comments.length;
 
-                return new_comment.id;
+                return null;
             })
-            .then( new_comment_id => 
-                document.querySelector(`.csr-delete-comment[data-id="${new_comment_id}"]`)
-                    .addEventListener('click',deleteComment) )
             .then(_not_used => form_course_comment.reset() )                
             .catch(error => console.log("Fetch error:",error));
         
     }
 
-    function deleteComment(event)
+    app.deleteComment=function (event)
     {
-        const id_to_delete=event.target.dataset.id;
-        const pos_to_delete=event.target.dataset.pos;
+        const id_to_delete=event.target.dataset.id;        
         console.log("deleteComment ", id_to_delete);
 
         fetch(COMMENTS_ENDPOINT + `/${id_to_delete}`, { method: 'DELETE' })
             .then(response => {
                 console.log("DELETE response:", response);
-                if( response.ok ) {                    
+                if( response.ok ) {
+                    let pos_to_delete=-1;
+                    for(let pos=0; pos<app.comments.length; pos++)
+                        if( app.comments[pos].id == id_to_delete) {
+                            pos_to_delete = pos;
+                            break;
+                        }
                     app.comments.splice(pos_to_delete, 1);
+
                     console.log(`Deleted comment id ${id_to_delete} and from array pos ${pos_to_delete}`);
                 }
                 else {
@@ -152,6 +153,5 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.log("Fetch error:",error));
 
     }
-
 
 });
